@@ -17,7 +17,7 @@ const blogService = {
 
   // GET BLOG BY ID
   getBlogById: async (id) => {
-    return await api.get(`/api/blogs/${id}/`);
+    return await api.get(`/api/blogs/${id}`);
   },
 
   // UPDATE BLOG (title, content, file, tags, etc.)

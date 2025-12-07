@@ -77,6 +77,11 @@ exports.getPost = async (req, res) => {
   if (!post) return res.status(404).json({ message: "Not found" });
   res.json(post);
 };
+exports.getPostById = async (req, res) =>{
+  const post = await BlogPost.findOne({_id:req.params.id}).populate("author","name email");
+   if (!post) return res.status(404).json({ message: "Not found" });
+  res.json(post);
+}
 
 exports.listPosts = async (req, res) => {
   const { page = 1, limit = 10, tag, author } = req.query;

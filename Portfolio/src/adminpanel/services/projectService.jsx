@@ -10,13 +10,21 @@ const projectService = {
   },
 
   // GET ALL PROJECTS
-  getProjects: async () => {
-    return await api.get("/api/projects/public/");
-  },
+ getProjects: async (keyword = '') => {
+  let url = "/api/projects/public/";
+  
+  // If a keyword is provided, append it as a query parameter
+  if (keyword) {
+    // Example final URL: /api/projects/public/?q=react
+    url = `/api/projects/public/?q=${encodeURIComponent(keyword)}`;
+  }
+
+  return await api.get(url);
+},
 
   // GET PROJECT BY ID
   getProjectById: async (id) => {
-    return await api.get(`/api/projects/${id}/`);
+    return await api.get(`/api/projects/${id}`);
   },
 
   // UPDATE PROJECT

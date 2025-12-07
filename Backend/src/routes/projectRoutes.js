@@ -7,7 +7,10 @@ const upload = require("../middlewares/upload")("projectpics");
 
 router.post("/", protect,upload.single("image"), projectController.createProject);
 router.get("/me", protect, projectController.getMyProjects);
-router.get("/public", projectController.getPublicProjects);
+router.get("/public/", projectController.getPublicProjects);
+
+router.get("/:id",projectController.getProjectById)
+
 router.put("/:id", protect, projectController.updateProject);
 router.delete("/:id", protect, projectController.deleteProject);
 

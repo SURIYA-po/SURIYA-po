@@ -73,3 +73,47 @@
 .pair .search.visible ~ .textareas {
     top: calc(100% + 10px); /* Adjust position */
 }
+
+/* search-results.css */
+
+/* Top-level wrapper for vertical alignment */
+.search-container {
+    /* Ensures the results box drops down vertically below the input/button pair */
+    display: flex;
+    flex-direction: column; 
+    align-items: flex-end; /* Align the whole thing to the right (if in a header) */
+    position: relative; 
+}
+
+/* Style the results box and textarea (using your existing class name) */
+.textareas {
+    /* Position the results box right below the input bar */
+    position: absolute;
+    top: 100%; /* Place it just below the .pair container */
+    right: 0;
+    width: 300px; /* Match the input field's max-width */
+    z-index: 5; /* Ensure it stays above other content */
+    margin-top: 5px; /* Small gap from the button */
+    
+    /* Apply black/green theme styles */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.textareas textarea {
+    width: 100%;
+    height: auto;
+    padding: 10px;
+    border: 1px solid #70e000; /* Green border for the theme */
+    background-color: #111; /* Dark background */
+    color: #f0f0f0;
+    resize: none; /* Prevent user from resizing the box */
+    font-family: monospace;
+    outline: none;
+}
+
+/* Adjust the break tags to be less disruptive in the final layout */
+.search-container br {
+    display: none;
+}

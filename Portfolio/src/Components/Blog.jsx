@@ -16,6 +16,7 @@ function Blog() {
         try {
           const response = await blogService.getBlogs();
           setBlogData(response.data);
+          console.log(blogData)
         } catch (error) {
           console.error("Failed to fetch blogs:", error);
         }
@@ -33,7 +34,9 @@ function Blog() {
         <div className="projects-list">
           {blogData.map((blog) => (
             // Pass the entire project object as the 'data' prop to PbCard
-            <PbCard key={blog._id} data={blog} />
+           <Link to={`/blog/view/${blog._id}`}> 
+           
+           <PbCard key={blog._id} data={blog} /> </Link>
           ))}
         </div>
 

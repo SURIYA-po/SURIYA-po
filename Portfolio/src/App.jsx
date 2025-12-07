@@ -12,6 +12,8 @@ import RegisterForm from './adminpanel/Forms/RegisterForm'
 import ProjectForm from './adminpanel/Forms/ProjectForm'
 import Blog from './Components/Blog'
 import BlogForm from './adminpanel/Forms/BlogPostForm'
+import ProjectViewPage from './Components/view_pages/ProjectViewPage'
+import BlogViewWrapper from './Components/view_pages/BlogViewWrapper'
 //
 
 function App() {
@@ -34,6 +36,21 @@ function App() {
           <>
            <HeaderComponent/>
           <Project />
+           <Footer/>
+          </>
+        } />
+         <Route path="/project_view_page/:id" element={
+          <>
+           <HeaderComponent/>
+          <ProjectViewPage/>
+           <Footer/>
+          </>
+        } />
+
+        <Route path="/blog/view/:id" element={
+          <>
+           <HeaderComponent/>
+         <BlogViewWrapper/>
            <Footer/>
           </>
         } />

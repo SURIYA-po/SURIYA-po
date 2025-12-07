@@ -14,6 +14,7 @@ function Projects() {
     async function fetchProjects() {
       try {
         const response = await projectService.getProjects();
+        console.log(response.data)
         setProjectData(response.data);
       } catch (error) {
         console.error("Failed to fetch projects:", error);
@@ -33,7 +34,9 @@ function Projects() {
         <div className="projects-list">
           {projectsData.map((project) => (
             // Pass the entire project object as the 'data' prop to PbCard
+            <Link to={`/project_view_page/${project._id}`}>
             <PbCard key={project._id} data={project} />
+            </Link>
           ))}
         </div>
 

@@ -5,7 +5,9 @@ const blog = require("../controllers/blogController");
 const upload = require("../middlewares/upload")("blogpics");
 
 router.post("/", protect, upload.single("coverImage"), blog.createPost);
+router.get("/:id",blog.getPostById);
 router.get("/", blog.listPosts);
+
 router.get("/:slug", blog.getPost);
 router.post("/:id/share", blog.incrementShare); // frontend calls this when share happens
 

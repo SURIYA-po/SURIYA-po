@@ -2,6 +2,7 @@ import React, { useRef, useState } from 'react';
 import { CiSearch } from "react-icons/ci";
 import { RxCross2 } from "react-icons/rx";
 import './searchButton.css';
+import { Link } from 'react-router-dom';
 // Import the new CSS file
  
 // Assuming this service is available (from previous context)
@@ -55,13 +56,10 @@ function SearchButton({ onMessage }) {
         try {
             // Call the service function with the current search term
             const response = await projectService.getProjects(searchTerm);
+            console.log(response)
             
             // Format results for display in the textarea (Title and ID snippet)
-            const formattedResults = response.data.map(
-                (item, index) => `${index + 1}. ${item.title} (ID: ${item._id.slice(-4)})` 
-            ).join('\n'); 
-
-            setResults(formattedResults);
+            setResults(response.data);
             
         } catch (error) {
             console.error("Error fetching search results:", error);
@@ -113,22 +111,37 @@ function SearchButton({ onMessage }) {
                 </div>
             </div>
 
-            <br /><br />
-            {searchVisibles && (
-                <div className='textareas'>
-                    <textarea
-                        name="searchResults"
-                        id="searchResults"
-                        placeholder="Searched Items"
-                        readOnly
-                        rows={6} // Increased rows for better visibility
-                        cols={30}
-                        // Display the dynamic content
-                        value={textareaContent}
-                    />
-                </div>
-            )}
+           {searchVisibles && (
+            // Use the original container class
+            <div className='textareas'> 
+                {isLoading ? (
+                    <div className="search-status-message">Searching...</div>
+                ) : results.length > 0 ? (
+                    // --- ⚠️ NEW MAPPING LOGIC ⚠️ ---
+                    <div className="search-results-list">
+                        {results.map((project) => (
+                            <Link 
+                                key={project._id} 
+                                to={`/project_view_page/${project._id}`}
+                                // Optional: Close the search bar upon clicking a link
+                                onClick={toggleSearch} 
+                                className="search-result-item" 
+                            >
+                                {project.title}
+                            </Link>
+                        ))}
+                    </div>
+                    // ---------------------------------
+                ) : (
+                    <div className="search-status-message">
+                        {searchTerm === '' ? 'Type a keyword to search.' : 'No results found.'}
+                    </div>
+                )}
+            </div>
+
+        )}
         </div>
+
     )
 }
 

@@ -4,6 +4,8 @@ import TiltCard from './Handletilt';
 import { db } from '../Services/firebase';
 import { collection, getDocs } from 'firebase/firestore';
 import { useNavigate } from 'react-router-dom';
+import projectService from '../adminpanel/services/projectService';
+import ProjectViewPage from './view_pages/ProjectViewPage';
 
 const PortfolioSection = () => {
       const navigate = useNavigate();
@@ -19,16 +21,14 @@ const PortfolioSection = () => {
     const [isLoading, setIsLoading] = useState(true);
     const [selectedProject, setSelectedProject] = useState(null);
 
+
     // Fetch projects from Firebase
     useEffect(() => {
         const fetchProjects = async () => {
             try {
                 setIsLoading(true);
-                const snapshot = await getDocs(collection(db, 'My_details'));
-                const items = snapshot.docs.map(doc => ({
-                    id: doc.id,
-                    ...doc.data()
-                }));
+                const snapshot = await projectService.getProjects()
+                const items =snapshot.data;
                 setPortfolioItems(items);
             } catch (error) {
                 console.error('Error fetching projects:', error);
@@ -80,6 +80,7 @@ const PortfolioSection = () => {
 
     // Handle project click for modal
     const handleProjectClick = (project) => {
+        console.log(project)
         setSelectedProject(project);
     };
 
@@ -180,7 +181,7 @@ const PortfolioSection = () => {
                                     ref={(el) => (cardRefs.current[index] = el)}
                                     onMouseMove={(e) => handleMouseMove(e, index)}
                                     onMouseLeave={() => handleMouseLeave(index)}
-                                    onClick={() => handleProjectClick(item)}
+                                    onClick={() => handleProjectClick(item) }
                                 >
                                     {/* Project Image */}
                                     {item.image && (
@@ -248,79 +249,8 @@ const PortfolioSection = () => {
                 )}
 
                 {/* Project Details Modal */}
-                {selectedProject && (
-                    <div className="modal-overlay" onClick={closeModal}>
-                        <div className="modal-content" onClick={(e) => e.stopPropagation()}>
-                            <button className="modal-close" onClick={closeModal}>×</button>
-                            
-                            <div className="modal-header">
-                                <h3>{selectedProject.name || selectedProject.title}</h3>
-                                <span className="modal-category">
-                                    {selectedProject.category || 'Web Development'}
-                                </span>
-                            </div>
-
-                            {selectedProject.image && (
-                                <div className="modal-image">
-                                    <img src={selectedProject.image} alt={selectedProject.name || selectedProject.title} />
-                                </div>
-                            )}
-
-                            <div className="modal-body">
-                                <p>{selectedProject.description}</p>
-                                
-                                {selectedProject.challenges && (
-                                    <div className="modal-section">
-                                        <h4>Challenges</h4>
-                                        <p>{selectedProject.challenges}</p>
-                                    </div>
-                                )}
-
-                                {selectedProject.solution && (
-                                    <div className="modal-section">
-                                        <h4>Solution</h4>
-                                        <p>{selectedProject.solution}</p>
-                                    </div>
-                                )}
-
-                                {selectedProject.technologies && (
-                                    <div className="modal-section">
-                                        <h4>Technologies Used</h4>
-                                        <div className="technologies">
-                                            {selectedProject.technologies.map((tech, index) => (
-                                                <span key={index} className="tech-tag">
-                                                    {tech}
-                                                </span>
-                                            ))}
-                                        </div>
-                                    </div>
-                                )}
-
-                                <div className="modal-links">
-                                    {selectedProject.homepage && (
-                                        <a 
-                                            href={selectedProject.homepage} 
-                                            target="_blank" 
-                                            rel="noreferrer"
-                                            className="modal-link"
-                                        >
-                                            View Live Site
-                                        </a>
-                                    )}
-                                    {selectedProject.githubUrl && (
-                                        <a 
-                                            href={selectedProject.githubUrl} 
-                                            target="_blank" 
-                                            rel="noreferrer"
-                                            className="modal-link"
-                                        >
-                                            View Code
-                                        </a>
-                                    )}
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                {selectedProject && ( 
+            navigate(`/project_view_page/${selectedProject._id}`)
                 )}
             </section>
         </div>

@@ -34,43 +34,39 @@ exports.getPublicProjects = async (req, res) => {
     let query = { isPublic: true }; // Base query to get public items
     let projection = {}; // Initialize an empty projection object
 
-    try {
-        if (keyword) {
-            // 1. Keyword IS present (Search Mode)
-            
-            // Set the search query using the Text Index
-            query = { 
-                $text: { $search: keyword },
-                isPublic: true 
-            };
-            
-            // Exclude the large 'content' field to reduce payload size 
-            // since only search snippets/excerpts are needed.
-            // Using '-' prefixes fields to exclude.
-            projection = { content: 0 }; 
-            
-        } else {
-            // 2. Keyword IS NOT present (Full List Mode)
-            
-            // Include the large 'content' field. 
-            // You can explicitly set it to 1, or just leave 'projection' as {} 
-            // and the content field will be included by default, 
-            // but setting it to {} is explicit and clearer.
-            projection = {}; 
-            // Note: If you have a different large field name (e.g., 'description'), use that instead.
-        }
-
-        // --- Execute the Mongoose Query ---
-        const projects = await Project.find(query)
-            .select(projection) // Apply the conditional projection
-            .lean(); 
-
-        res.status(200).json(projects);
-
-    } catch (error) {
-        console.error("Project List/Search Error:", error);
-        res.status(500).json({ message: "Failed to retrieve data." });
+   try {
+    // Determine projection based on keyword presence
+    if (keyword) {
+        // Search Mode
+        query = { 
+            $text: { $search: keyword },
+            isPublic: true 
+        };
+        // Exclude large field (e.g., description/content from your model)
+        projection = { description: 0 }; 
+        
+    } else {
+        // Full List Mode (Include the large field by default)
+        query = { isPublic: true };
+        projection = {}; 
     }
+
+    // --- Execute the Mongoose Query ---
+    const projects = await Project.find(query)
+        .select(projection) 
+        .sort(
+            // CONDITIONALLY SORT: Only sort by score if a keyword was provided
+            keyword ? { score: { $meta: "textScore" } } : { createdAt: -1 } 
+            // If no keyword, sort by creation date descending (newest first)
+        )
+        .lean(); 
+
+    res.status(200).json(projects);
+
+} catch (error) {
+    console.error("Project List/Search Error:", error);
+    res.status(500).json({ message: "Failed to retrieve data." });
+}
 };
 
 exports.updateProject = async (req, res) => {

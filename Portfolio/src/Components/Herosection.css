@@ -52,7 +52,7 @@
 
   }
   
-  h1 {
+  .headings1 {
     color: rgb(255, 255, 255);
     font-family: Poppins, sans-serif;
     text-align: left;
@@ -65,12 +65,15 @@
     
    
   }
-  h2{
+  .headings2{
     text-align: left;
     margin-left: 40px;
+     font-weight: 600;
+     font-size:  25px;
+      font-family: 'Times New Roman', Times, serif;
   }
   
-  p {
+  .paragraphs {
     font-family: Roboto, sans-serif;
     color: rgb(255, 255, 255);
     max-width: 480px;

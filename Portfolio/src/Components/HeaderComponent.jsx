@@ -59,7 +59,8 @@ function HeaderComponent() {
           <li>
             <SearchButton onMessage={handleMessage} />
           </li>
-          <li><a href="#services">Services</a></li>
+         
+           <li><Link to="/">Services</Link></li>
           <li><Link to="/portfolio">Portfolio</Link></li>
                     <li><Link to="/blog">Blog</Link></li>
           <li><a href="#about">About me</a></li>
@@ -69,7 +70,7 @@ function HeaderComponent() {
 
       <div className={`nav-item_2 ${searchVisible ? 'hidden' : ''}`}>
         <ul ref={navLinksRef}>
-          <li><a href="#services">Services</a></li>
+          <li><Link to="/">Services</Link></li>
           <li><Link to="/portfolio">Portfolio</Link></li>
                               <li><Link to="/blog">Blog</Link></li>
 

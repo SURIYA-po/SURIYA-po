@@ -22,13 +22,14 @@
 
 .search-field input {
     width: 300px;
-    padding: 10px;
+    padding: 12px;
     background-color: #3c3c3c;
     outline: none;
     font-size: 16px;
     height: 46px;
     border: none;
     margin-top: 1px;
+    margin-bottom: 1px;
     margin-left: 1px;
     border-radius: 12px;
     color: #fff; /* Text color */
@@ -62,7 +63,7 @@
  left:calc(0px);
     width: calc(100%); /* Same width as pair div */
     padding: 10px;
-    border: 2px solid #ccc; /* Border style */
+   /* Border style */
     border-radius: 8px;
     background-color: #1b1c1d; /* Background color */
     resize: none; /* Disable textarea resizing */
@@ -93,7 +94,7 @@
     right: 0;
     width: 300px; /* Match the input field's max-width */
     z-index: 5; /* Ensure it stays above other content */
-    margin-top: 5px; /* Small gap from the button */
+    margin-top: 10px; /* Small gap from the button */
     
     /* Apply black/green theme styles */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
@@ -111,9 +112,53 @@
     resize: none; /* Prevent user from resizing the box */
     font-family: monospace;
     outline: none;
+     border-radius: 8px;
 }
 
 /* Adjust the break tags to be less disruptive in the final layout */
 .search-container br {
     display: none;
+}
+/* search-results-list.css (Create this new file) */
+
+/* Ensure the results list fills the container */
+.search-results-list {
+    display: flex;
+    flex-direction: column;
+    max-height: 250px; /* Set a max height */
+    overflow-y: auto; /* Enable scrolling */
+    background-color: #111;
+    border: 1px solid #70e000;
+    border-radius: 5px;
+    padding: 5px 0;
+}
+
+/* Style for each clickable link */
+.search-result-item {
+    padding: 10px 15px;
+    color: #f0f0f0; /* White text */
+    text-decoration: none; /* Remove underline */
+    border-bottom: 1px solid #222; /* Separator line */
+    font-size: 14px;
+    transition: background-color 0.2s ease, color 0.2s ease;
+    cursor: pointer;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis; /* Add "..." if text is too long */
+}
+
+/* Hover effect */
+.search-result-item:hover {
+    background-color: #1c1c1c;
+    color: #70e000; /* Green hover text */
+}
+
+/* Style for status messages (Loading, No Results) */
+.search-status-message {
+    padding: 10px 15px;
+    color: #999;
+    font-size: 14px;
+    background-color: #111;
+    border: 1px solid #70e000;
+    border-radius: 5px;
 }

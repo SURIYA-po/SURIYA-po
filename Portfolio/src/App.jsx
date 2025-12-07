@@ -24,6 +24,7 @@ function App() {
         {/* Main Home Page Route */}
         <Route path="/" element={
           <>
+          
             <HeaderComponent/>
             <HeroSection/>
             <PortfolioSection/>

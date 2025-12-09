@@ -118,6 +118,13 @@ const handleSubmit = async (e) => {
               </span>
             </p>
 
+              <p className="text-gray-400 text-center text-sm mt-4">
+              Go to Home{" "}
+              <span className="text-blue-400 cursor-pointer hover:underline">
+                <Link to="/">Home</Link>
+              </span>
+            </p>
+
           </form>
         </div>
       </motion.div>

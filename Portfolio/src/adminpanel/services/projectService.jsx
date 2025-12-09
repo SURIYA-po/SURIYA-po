@@ -43,6 +43,9 @@ const projectService = {
   toggleProjectVisibility: async (id, isPublic) => {
     return await api.patch(`/api/projects/${id}/visibility/`, { isPublic });
   },
+  getUniqueTags: async ()=>{
+    return await api.get("/api/projects/tags")
+  }
 };
 
 export default projectService;

@@ -45,7 +45,7 @@ export default function ModernProjectForm() {
         if (form.techInput.trim() !== "") {
             setForm({
                 ...form,
-                techStack: [...form.techStack, form.techInput.trim()],
+                techStack: [...form.techStack, form.techInput.trim(",")],
                 techInput: "",
             });
         }

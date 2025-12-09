@@ -84,7 +84,7 @@ export default function ModernBlogPostForm() {
   };
 
   return (
-    <div className="min-h-screen flex items-start justify-center bg-gray-950 p-6 md:p-12">
+    <div className="min-h-screen flex items-start justify-center bg-gray-950 p-6 md:p-12 ">
       <form
         onSubmit={handleSubmit}
         // IMPORTANT: Must set encType for file uploads
@@ -95,10 +95,7 @@ export default function ModernBlogPostForm() {
           <h2 className="text-4xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-400">
             Content Creator Dashboard ✍️
           </h2>
-          <p className="text-gray-400 mt-1">
-            Craft your next compelling blog post. (Controller Fields: **title**,
-            **content**, **excerpt**, **tags**, **isPublished**, **coverImage**)
-          </p>
+          
         </header>
 
         {/* Status Messages */}

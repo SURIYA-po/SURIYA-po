@@ -80,3 +80,20 @@ exports.deleteProject = async (req, res) => {
   if (!project) return res.status(404).json({ message: "Project not found or not yours" });
   res.json({ message: "Deleted" });
 };
+
+exports.getUniqueTags = async (req, res) => {
+  try {
+    // 1. Define the query for public projects
+    const query = { isPublic: true };
+    
+    // 2. Use the Mongoose .distinct() method to get unique values 
+    //    from the 'techStack' field based on the query.
+    const uniqueTags = await Project.distinct('techStack', query);
+    
+    // Example Output: [ "React", "Node.js", "MongoDB", "Express", ... ]
+    res.status(200).json(uniqueTags);
+  } catch (error) {
+    console.error("Unique Tags Retrieval Error:", error);
+    res.status(500).json({ message: "Failed to retrieve unique tags." });
+  }
+};

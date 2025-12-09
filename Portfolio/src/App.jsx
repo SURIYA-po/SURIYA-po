@@ -14,6 +14,7 @@ import Blog from './Components/Blog'
 import BlogForm from './adminpanel/Forms/BlogPostForm'
 import ProjectViewPage from './Components/view_pages/ProjectViewPage'
 import BlogViewWrapper from './Components/view_pages/BlogViewWrapper'
+import LogoutPage from './adminpanel/pages/LogoutPage'
 //
 
 function App() {
@@ -56,6 +57,7 @@ function App() {
           </>
         } />
         <Route path="/login" element={<LoginPage />} />
+        <Route path="/logout" element={<LogoutPage />} />
         <Route path="/register" element={<RegisterForm />} />
         <Route path="/createproject" element={<ProjectForm />} />
        <Route path="/blog" element={

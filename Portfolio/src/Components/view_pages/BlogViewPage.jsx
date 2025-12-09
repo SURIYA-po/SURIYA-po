@@ -1,7 +1,7 @@
 // src/components/BlogViewPage.jsx
 import React from 'react';
 import { Calendar, User, Tag, Heart, Share2, Eye } from 'lucide-react';
-import { useEffect,useState } from 'react';
+import { useEffect,useState} from 'react';
 
 const BlogViewPage = ({ blog }) => {
 

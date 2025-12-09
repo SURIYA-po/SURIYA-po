@@ -40,12 +40,12 @@ const PortfolioSection = () => {
     }, []);
 
     // Get unique categories
-    const categories = ['All', ...new Set(portfolioItems.map(item => item.category || 'Web Development'))];
+    const categories = ['All' , ...new Set(portfolioItems.map(item => item.category || 'Web Development' ))];
 
     // Filter projects by category
     const filteredProjects = selectedCategory === 'All' 
         ? portfolioItems 
-        : portfolioItems.filter(item => (item.category || 'Web Development') === selectedCategory);
+        : portfolioItems.filter(item => (item.category || 'Web Development' || 'Data Science') === selectedCategory);
 
     // Handle mouse move for tilt effect
     const handleMouseMove = (e, index) => {
@@ -153,15 +153,7 @@ const PortfolioSection = () => {
 
                 {/* Category Filter */}
                 <div className="portfolio-filters">
-                    {categories.map((category) => (
-                        <button
-                            key={category}
-                            className={`filter-btn ${selectedCategory === category ? 'active' : ''}`}
-                            onClick={() => handleCategoryChange(category)}
-                        >
-                            {category}
-                        </button>
-                    ))}
+                 
                 </div>
 
                 {/* Loading State */}
@@ -184,26 +176,24 @@ const PortfolioSection = () => {
                                     onClick={() => handleProjectClick(item) }
                                 >
                                     {/* Project Image */}
-                                    {item.image && (
-                                        <div className="project-image">
-                                            <img src={item.image} alt={item.name || item.title} />
-                                            <div className="image-overlay">
-                                                <span className="view-details">View Details</span>
-                                            </div>
-                                        </div>
-                                    )}
+                                   
                                     
                                     <div className="card-content">
-                                        <h4 className="headers_1">{item.category || 'Web Development'}</h4>
-                                        <h5>{item.name || item.title}</h5>
-                                        <p className="para">{item.description}</p>
+                                   
+                                       <h4 className="headers_1">{item.title.length > 50 
+                        ? item.title.substring(0, 50) + '...' 
+                        : item.title}</h4>
+                                        <p className="para">{item.description.length > 50 
+                        ? item.description.substring(0, 50) + '...' 
+                        : item.description
+                    } </p>
                                         
                                         {/* Technologies Used */}
-                                        {item.technologies && (
+                                        {item.techStack && (
                                             <div className="technologies">
-                                                {item.technologies.map((tech, techIndex) => (
+                                                {item.techStack.slice(0,4).map((tech, techIndex) => (
                                                     <span key={techIndex} className="tech-tag">
-                                                        {tech}
+                                                        {tech.toString().toUpperCase()}
                                                     </span>
                                                 ))}
                                             </div>
@@ -225,6 +215,13 @@ const PortfolioSection = () => {
                                             ></div>
                                         </div>
                                     </div>
+                                     {item.image && (
+                                        <div className="project-image">
+                                            <img src={item.image} alt={item.name || item.title} />
+                                            
+                                           
+                                        </div>
+                                    )}
                                 </div>
                             ))}
                         </div>

@@ -34,3 +34,4 @@ Thumbs.db
 *.svg
 
 uploads/avatars/
+node_modules

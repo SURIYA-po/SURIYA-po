@@ -6,7 +6,6 @@ import HeroSection from './Components/HeroSection'
 import { PortfolioSection } from './Components/ServicessSection'
 import Project from './Components/Project'
 import Footer from './Components/Footer'
-import ScrollToHash from './ScroolToHash'
 import LoginPage from './adminpanel/pages/LoginPage'
 import RegisterForm from './adminpanel/Forms/RegisterForm'
 import ProjectForm from './adminpanel/Forms/ProjectForm'
@@ -20,7 +19,7 @@ import LogoutPage from './adminpanel/pages/LogoutPage'
 function App() {
   return (
     <Router>
-      <ScrollToHash />
+     
       <Routes>
         {/* Main Home Page Route */}
         <Route path="/" element={

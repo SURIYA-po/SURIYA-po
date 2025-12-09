@@ -12,7 +12,7 @@ const commentRoutes = require("./routes/commentRoutes");
 const connectDB = require("./config/db");
 
 const app = express();
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT;
 
 // ----------------------
 // GLOBAL MIDDLEWARES
@@ -34,7 +34,7 @@ app.use(express.json());
 app.use('/uploads', express.static('uploads', {
   setHeaders: (res) => {
     res.set('Cross-Origin-Resource-Policy', 'cross-origin');
-    res.set('Access-Control-Allow-Origin', 'http://localhost:5173');
+    res.set('Access-Control-Allow-Origin', '*');
   },
 }));
 

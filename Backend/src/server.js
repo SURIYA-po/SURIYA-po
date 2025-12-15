@@ -18,7 +18,7 @@ const PORT = process.env.PORT;
 // GLOBAL MIDDLEWARES
 // ----------------------
 app.use(cors({
-  origin: "https://suriya-po.onrender.com",
+  origin: "*",
   methods: "GET,POST,PUT,PATCH,DELETE",
   allowedHeaders: "Content-Type, Authorization",
   credentials: true

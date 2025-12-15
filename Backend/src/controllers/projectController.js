@@ -32,11 +32,12 @@ exports.createProject = async (req, res) => {
 };
 
 exports.getMyProjects = async (req, res) => {
-  const projects = await Project.find({ owner: req.user._id });
+  const projects = await Project.findById({ owner: req.user._id })
+   .populate("owner", "name");
   res.json(projects);
 };
 exports.getProjectById = async (req, res) =>{
-  const project = await Project.find({_id:req.params.id});
+  const project = await Project.find({_id:req.params.id}).populate("owner","name email");
   res.json(project);
 }
 

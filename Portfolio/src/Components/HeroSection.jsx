@@ -13,15 +13,22 @@ const HeroSection = () => {
           building sleek, user-centric solutions that address complex digital challenges. My approach combines
           technical precision with creative innovation to deliver outstanding results.
         </p>
-        <button className="cta-button">  <a href="">        <img src="/assets/upwork.svg" alt="LinkedIn" />
-        </a>Contact me on upwork </button>
-     
+     <a
+  href="https://www.upwork.com/freelancers/~01a58c5d929441a2dc"
+  class="cta-button"
+  target="_blank"
+  rel="noopener noreferrer"
+>
+  <img src="/assets/upwork.svg" alt="Upwork" style={{verticalAlign: 'middle', marginRight: '8px'}} />
+  Contact me on Upwork
+</a>
+      
      
       <div className="footer-icons">
-        <a href=""><img src="/assets/linkedin.svg" alt="Upwork" /> </a>
-        <a href="">        <img src="/assets/upwork.svg" alt="LinkedIn" />
+        <a href="https://www.linkedin.com/in/pokhrelsurya-z/"><img src="/assets/linkedin.svg" alt="Upwork" /> </a>
+        <a href="https://www.upwork.com/freelancers/~01a58c5d929441a2dc">        <img src="/assets/upwork.svg" alt="LinkedIn" />
         </a>
-       <a href=""> <img src="/assets/github.svg" alt="GitHub" /></a>
+       <a href="https://github.com/Suriya-po"> <img src="/assets/github.svg" alt="GitHub" /></a>
       </div>
 
       </div>

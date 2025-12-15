@@ -111,7 +111,9 @@ const PortfolioSection = () => {
                         <h4 className="headers">What I can do for you</h4>
                         <p>Faster, better products that your users love. Here are the services I provide:</p>
                         <ul>
-                            <li>WordPress Development</li>
+                         <li>Full-Stack Web Development</li>
+                            <li>Backend API Development</li>
+                            <li>MicroService Architecture</li>
                             <li>React Development</li>
                             <li>Maintenance & Support</li>
                             <li>UI/UX Design</li>
@@ -122,12 +124,15 @@ const PortfolioSection = () => {
                         <div className="icon">
                             <img src="/assets/Homepage_Services_2.avif" alt="The girl at the laptop" />
                         </div>
-                        <h4 className="headers">Languages I'm fluent in</h4>
+                        <h4 className="headers">Languages and Frameworks</h4>
                         <p>Every developer requires the right tool for the problem. I'm proficient in:</p>
                         <ul>
-                            <li>PHP</li>
-                            <li>JavaScript</li>
-                            <li>HTML & CSS</li>
+                            <li>Python</li>
+                            <li>Java</li>
+                              <li>Spring Boot</li>
+                            <li>Node.js</li>
+                            <li>React.js</li>
+                            <li>MongoDB & SQL</li>
                         </ul>
                     </div>
 

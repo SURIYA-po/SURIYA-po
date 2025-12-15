@@ -30,9 +30,9 @@ const Footer = () => {
                 </div>
 
                 <div className="footer_icon">
-                    <a href=""><img src="/assets/linkedin.svg" alt="LinkedIn" /></a>
-                    <a href=""><img src="/assets/upwork.svg" alt="Upwork" /></a>
-                    <a href=""><img src="/assets/github.svg" alt="GitHub" /></a>
+                    <a href="https://www.linkedin.com/in/pokhrelsurya-z/"><img src="/assets/linkedin.svg" alt="LinkedIn" /></a>
+                    <a href="https://www.upwork.com/freelancers/~01a58c5d929441a2dc"><img src="/assets/upwork.svg" alt="Upwork" /></a>
+                    <a href="https://github.com/Suriya-po"><img src="/assets/github.svg" alt="GitHub" /></a>
                 </div>
 
                 <p className="footer-credits">

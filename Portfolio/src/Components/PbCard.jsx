@@ -22,7 +22,7 @@ console.log(data);
     // Mapping for a Project (Portfolio Item)
     cardData.isPortfolio = true;
     cardData.subtitle = data.title;
-    cardData.description = data.description;
+    cardData.description = data.description.substring(0, 150) + '...';
     cardData.imageSrc = data.image;
     cardData.tags = data.techStack || [];
     cardData.projectLink = data.liveUrl || data.repoUrl;

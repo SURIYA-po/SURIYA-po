@@ -93,7 +93,7 @@ api.interceptors.response.use(
       const refresh = localStorage.getItem("refresh");
       if (refresh) {
         try {
-          const res = await axios.post("http://localhost:8000/api/token/refresh/", {
+          const res = await axios.post("https://suriya-po.onrender.com/api/token/refresh/", {
             refresh,
           });
           localStorage.setItem("access", res.data.access);

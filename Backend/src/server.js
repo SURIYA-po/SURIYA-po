@@ -17,13 +17,14 @@ const PORT = process.env.PORT;
 // ----------------------
 // GLOBAL MIDDLEWARES
 // ----------------------
-app.use(cors({
-  origin: "*",
-  methods: "GET,POST,PUT,PATCH,DELETE",
-  allowedHeaders: "Content-Type, Authorization",
-  credentials: true
-}));
-
+app.use(
+  cors({
+    origin: "https://suriiya.vercel.app",
+    credentials: true,
+    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+    allowedHeaders: ["Content-Type", "Authorization"],
+  })
+);
  // handle OPTIONS preflight
 
 app.use(helmet());

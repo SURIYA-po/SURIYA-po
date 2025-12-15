@@ -11,6 +11,7 @@ const blogSchema = new mongoose.Schema({
   isPublished: { type: Boolean, default: false },
   shares: { type: Number, default: 0 },
   likes: { type: Number, default: 0 },
+  public_id:{type:String,required:false}
 }, { timestamps: true });
 
 module.exports = mongoose.model("BlogPost", blogSchema);

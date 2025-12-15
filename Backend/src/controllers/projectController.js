@@ -1,11 +1,21 @@
 const Project = require("../models/Project");
+const cloudinary = require("../config/cloudinary");
 
 exports.createProject = async (req, res) => {
   const { title, description, techStack, repoUrl, liveUrl, isPublic } = req.body;
  let projectImage = null;
-    if (req.file) {
-      projectImage = `${req.protocol}://${req.get("host")}/uploads/projectpics/${req.file.filename}`;
+  if (req.file) {
+  const result = await cloudinary.uploader.upload(
+    `data:${req.file.mimetype};base64,${req.file.buffer.toString("base64")}`,
+    {
+      folder: "projectpics",
     }
+  );
+
+  projectImage = result.secure_url;
+  public_id = result.public_id;
+
+}
   const data = {
     owner: req.user._id,
     title,
@@ -14,7 +24,8 @@ exports.createProject = async (req, res) => {
     repoUrl,
     liveUrl,
     isPublic,
-    image: projectImage
+    image: projectImage,
+    public_id: public_id
   };
   const project = await Project.create(data);
   res.status(201).json(project);

@@ -2,9 +2,9 @@ const express = require("express");
 const router = express.Router();
 const { protect } = require("../middlewares/auth");
 const blog = require("../controllers/blogController");
-const upload = require("../middlewares/upload")("blogpics");
+const upload = require("../middlewares/upload");
 
-router.post("/", protect, upload.single("coverImage"), blog.createPost);
+router.post("/", protect, upload().single("coverImage"), blog.createPost);
 router.get("/:id",blog.getPostById);
 router.get("/", blog.listPosts);
 

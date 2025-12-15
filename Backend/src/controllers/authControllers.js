@@ -1,6 +1,7 @@
 const User = require("../models/User");
 const { signToken } = require("../middlewares/signToken");
 const jwt = require('jsonwebtoken');
+const cloudinary = require("../config/cloudinary");
 // src/controllers/authController.js
 
 
@@ -31,7 +32,15 @@ exports.register = async (req, res) => {
     // Handle avatar file (if uploaded)
     let avatarUrl = null;
     if (req.file) {
-      avatarUrl = `${req.protocol}://${req.get("host")}/uploads/avatars/${req.file.filename}`;
+     const result = await cloudinary.uploader.upload(
+    `data:${req.file.mimetype};base64,${req.file.buffer.toString("base64")}`,
+    {
+      folder: "avatars",
+    }
+  );
+
+  avatarUrl = result.secure_url;
+  public_id=result.public_id;
     }
 
     // Create user
@@ -41,6 +50,7 @@ exports.register = async (req, res) => {
       password,
       role: role || "user",
       avatar: avatarUrl,
+      public_id:public_id
     });
 
     await user.save();

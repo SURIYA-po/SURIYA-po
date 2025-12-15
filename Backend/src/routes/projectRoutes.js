@@ -3,9 +3,9 @@ const router = express.Router();
 const { protect } = require("../middlewares/auth");
 const projectController = require("../controllers/projectController");
 
-const upload = require("../middlewares/upload")("projectpics");
+const upload = require("../middlewares/upload");
 
-router.post("/", protect,upload.single("image"), projectController.createProject);
+router.post("/", protect,upload().single("image"), projectController.createProject);
 router.get("/me", protect, projectController.getMyProjects);
 router.get("/public/", projectController.getPublicProjects);
 router.get("/tags",projectController.getUniqueTags)

@@ -7,6 +7,7 @@ const userSchema = new mongoose.Schema({
   password: { type: String, required: true },
   role: { type: String, default: "user" }, // admin/developer/etc
   avatar: String,
+   public_id:{type:String,required:false},
 }, { timestamps: true });
 
 // hash before save

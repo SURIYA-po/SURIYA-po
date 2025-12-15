@@ -1,5 +1,6 @@
 const BlogPost = require("../models/BlogPost");
 const slugify = require("slugify");
+const cloudinary = require("../config/cloudinary");
 exports.createPost = async (req, res) => {
   try { 
     console.log("user is ", req.user);
@@ -35,17 +36,24 @@ exports.createPost = async (req, res) => {
     // Handle image upload
     // -----------------------------
     let coverImageUrl = null;
-    if (req.file) {
-      try {
-        coverImageUrl = `${req.protocol}://${req.get("host")}/uploads/blogpics/${req.file.filename}`;
-      } catch (imgError) {
-        return res.status(500).json({
-          message: "Image processing failed.",
-          error: imgError.message,
-        });
+   if (req.file) {
+  try {
+    const result = await cloudinary.uploader.upload(
+      `data:${req.file.mimetype};base64,${req.file.buffer.toString("base64")}`,
+      {
+        folder: "blogpics",
       }
-    }
+    );
 
+    coverImageUrl = result.secure_url;
+    public_id = result.public_id;
+  } catch (imgError) {
+    return res.status(500).json({
+      message: "Image upload to Cloudinary failed.",
+      error: imgError.message,
+    });
+  }
+}
     // -----------------------------
     // Create blog post
     // -----------------------------
@@ -58,6 +66,7 @@ exports.createPost = async (req, res) => {
       tags,
       coverImage: coverImageUrl,
       isPublished: isPublished ?? false,
+      public_id:public_id
     });
 
     return res.status(201).json(post);

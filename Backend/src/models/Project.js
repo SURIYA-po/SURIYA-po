@@ -8,7 +8,8 @@ const projectSchema = new mongoose.Schema({
   repoUrl: String,
   liveUrl: String,
   image: String,
-  isPublic: { type: Boolean, default: true }
+  isPublic: { type: Boolean, default: true },
+  public_id: { type: String, required: false }
 }, { timestamps: true });
 
 // --- ADD THE TEXT INDEX HERE ---

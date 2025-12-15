@@ -7,7 +7,9 @@ const cloudinary = require("../config/cloudinary");
 
 exports.register = async (req, res) => {
   try {
-    console.log("File received:", req.file);
+console.log("Cloudinary:", cloudinary);
+console.log("Uploader:", cloudinary.uploader);
+
 
     const { name, email, password, role } = req.body;
 

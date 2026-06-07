@@ -19,7 +19,7 @@ const PORT = process.env.PORT;
 // ----------------------
 app.use(
   cors({
-    origin: "https://suriiya.vercel.app",
+    origin: "https://pokhrelsurya.com.np",
     credentials: true,
     methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
     allowedHeaders: ["Content-Type", "Authorization"],

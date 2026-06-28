@@ -7,7 +7,7 @@ const HeroSection = () => {
     <div className="hero-section">
       <div className="content-wrapper">
         <h2  className='headings2'>I'm Surya</h2>
-        <h1 className='headings1'><span>AI</span><span className='span2'>Engineer</span>&amp;</h1> <br></br><h1  className='headings1'><span>Back</span>End Developer</h1>
+        <h1 className='headings1'><span>AI</span><span className='span2'>Engineer</span>&amp;</h1> <br></br><h1  className='headings1'><span>Re</span>searcher</h1>
         <p className='paragraphs'> 
          Just see the power of AI, Nothing can beat the power of AI , From Farmer to law makers , from studets to teachers, from doctor to engineers everyone uses AI, The one who knows the powe of AI will lead the future .
         so , I choose a correct path,  Anything can be build , Impossible becomes possible, Every business need a small modfication in future , I just need a big palyground  , I love build agents , llms are my friends and ML algorithms are my  eyes , Keep learning ,keep building, and keep motivating .Attention is all you need !

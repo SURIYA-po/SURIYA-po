@@ -101,7 +101,7 @@ const PortfolioSection = () => {
             {/* Services Section */}
             <section className="services-section">
                 <h2 className='headers'>[Services]</h2>
-                <h3>Crafting Solutions through Code, <br />One Project at a Time</h3>
+                <h3>Crafting Solutions AI agents <br />One Project at a Time</h3>
 
                 <div className="services-cards">
                     <div className="card">
@@ -111,12 +111,23 @@ const PortfolioSection = () => {
                         <h4 className="headers">What I can do for you</h4>
                         <p>Faster, better products that your users love. Here are the services I provide:</p>
                         <ul>
-                         <li>Full-Stack Web Development</li>
-                            <li>Backend API Development</li>
-                            <li>MicroService Architecture</li>
-                            <li>React Development</li>
-                            <li>Maintenance & Support</li>
-                            <li>UI/UX Design</li>
+
+                        
+                            <li>AI Agent Development</li>
+
+                            <li> AI integartion and Automation </li>
+
+                            <li>Data Science & Machine Learning</li>
+
+                            <li>API Development & Integration</li>
+                            
+                             <li>Full-Stack Web Development</li>
+
+                             <li> AI in Security </li>
+
+                            
+                          
+                
                         </ul>
                     </div>
 
@@ -126,13 +137,19 @@ const PortfolioSection = () => {
                         </div>
                         <h4 className="headers">Languages and Frameworks</h4>
                         <p>Every developer requires the right tool for the problem. I'm proficient in:</p>
-                        <ul>
-                            <li>Python</li>
+                        <ul> 
+                              <li>Python</li>
                             <li>Java</li>
-                              <li>Spring Boot</li>
-                            <li>Node.js</li>
-                            <li>React.js</li>
-                            <li>MongoDB & SQL</li>
+                            <li>
+                                langchain 
+                            </li>
+                            <li> pinecone </li>
+                            <li>LangSmith </li>
+                            <li>FastAPI</li>
+                             <li>Spring Boot</li>
+
+                
+                          
                         </ul>
                     </div>
 
@@ -141,10 +158,10 @@ const PortfolioSection = () => {
                             <img src="/assets/Homepage_Services_3.avif" alt="The girl at the laptop" />
                         </div>
                         <h4 className="headers">What you can expect</h4>
-                        <p>I develop solutions that go beyond aesthetics. Here's what you can expect:</p>
+                        <p> A full system that delivers on its promises </p>
                         <ul>
                             <li>Robust and Functional</li>
-                            <li>Optimized for Devices and User-Centric</li>
+                            <li>Optimized and Well Documented</li>
                             <li>Efficient and Easily Maintainable</li>
                         </ul>
                     </div>
@@ -154,7 +171,7 @@ const PortfolioSection = () => {
             {/* Portfolio Section */}
             <section  id="portfolio" className="portfolio-section">
                 <center><h2 className='headers'>[Portfolio]</h2></center>
-                <h3>I bring results. My clients are proof.</h3>
+                <h3>Dont judge the book by its cover.</h3>
 
                 {/* Category Filter */}
                 <div className="portfolio-filters">

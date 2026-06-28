@@ -32,7 +32,7 @@ const handleSubmit = async (e) => {
      
 
       // Navigate to home page
-      navigate("/");
+      navigate("/admin");
     }
 
   } catch (error) {

@@ -7,12 +7,11 @@ const HeroSection = () => {
     <div className="hero-section">
       <div className="content-wrapper">
         <h2  className='headings2'>I'm Surya</h2>
-        <h1 className='headings1'><span>Front</span><span className='span2'>End</span>&amp;</h1> <br></br><h1  className='headings1'><span>Back</span>End Developer</h1>
+        <h1 className='headings1'><span>AI</span><span className='span2'>Engineer</span>&amp;</h1> <br></br><h1  className='headings1'><span>Back</span>End Developer</h1>
         <p className='paragraphs'> 
-          With expertise in multiple programming languages and a passion for elegant design, I specialize in
-          building sleek, user-centric solutions that address complex digital challenges. My approach combines
-          technical precision with creative innovation to deliver outstanding results.
-        </p>
+         Just see the power of AI, Nothing can beat the power of AI , From Farmer to law makers , from studets to teachers, from doctor to engineers everyone uses AI, The one who knows the powe of AI will lead the future .
+        so , I choose a correct path,  Anything can be build , Impossible becomes possible, Every business need a small modfication in future , I just need a big palyground  , I love build agents , llms are my friends and ML algorithms are my  eyes , Keep learning ,keep building, and keep motivating .Attention is all you need !
+         </p>
      <a
   href="https://www.upwork.com/freelancers/~01a58c5d929441a2dc"
   class="cta-button"

@@ -50,13 +50,21 @@ background-blend-mode:overlay;
 
 @media (max-width: 768px) {
 
-  .services-cards, .portfolio-cards {
-    padding: 40px 24px;
-    
-    display: block;
-    text-align: center;
-    
-}
+  .services-cards {
+    padding: 20px 12px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .portfolio-cards {
+    padding: 16px 12px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+  }
 }
   
 /*   
@@ -594,24 +602,80 @@ h3{
 }
 
 
-.portfolio-card {
-    flex: 0 0 calc(33.333% - 14px); /* 3 cards per row minus gap */
-    max-width: calc(33.333% - 14px);
-    min-width: 250px; /* Minimum card width */
-    box-sizing: border-box;
-}
-
-/* Responsive adjustments */
-@media (max-width: 1024px) {
-    .portfolio-card {
-        flex: 0 0 calc(50% - 10px); /* 2 cards per row on tablets */
-        max-width: calc(50% - 10px);
-    }
-}
-
+/* ===== COMPREHENSIVE MOBILE RESPONSIVE (max-width: 768px) ===== */
 @media (max-width: 768px) {
-    .portfolio-card {
-        flex: 0 0 100%; /* 1 card per row on mobile */
-        max-width: 100%;
-    }
+
+  /* Fix section padding on mobile */
+  .services-section,
+  .portfolio-section {
+    padding: 30px 16px;
+    background-size: 200%, 60%;
+  }
+
+  /* Scale down large headings */
+  h3 {
+    font-size: 24px;
+    line-height: 32px;
+    text-wrap: wrap;
+  }
+
+  /* Service cards: single column, full width */
+  .card {
+    width: 100%;
+    max-width: 400px;
+    height: auto;
+    min-height: 200px;
+    margin: 0 auto;
+  }
+
+  .icon img {
+    left: 0;
+    position: relative;
+    float: none;
+    display: block;
+    margin: 0 auto 12px auto;
+  }
+
+  /* Portfolio cards: full width on mobile */
+  .portfolio-card {
+    flex: 0 0 100%;
+    max-width: 100%;
+    min-width: unset;
+    height: auto;
+    min-height: 180px;
+  }
+
+  /* Portfolio cards container centered */
+  .portfolio-cards {
+    max-width: 100%;
+    padding: 16px 12px;
+  }
+
+  /* View all button full width on mobile */
+  .view-all {
+    display: block;
+    margin: 16px auto;
+    width: auto;
+    text-align: center;
+  }
+
+  /* Card content text alignment on mobile */
+  .card-content {
+    padding-top: 0.75rem;
+    padding-right: 0.5rem;
+  }
+
+  /* Technologies tag wrap properly */
+  .technologies {
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+
+  /* Reduce h3 in section headers */
+  .services-section h3,
+  .portfolio-section h3 {
+    font-size: 22px;
+    line-height: 30px;
+    padding: 0 8px;
+  }
 }

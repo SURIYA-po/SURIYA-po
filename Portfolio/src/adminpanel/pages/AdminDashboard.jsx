@@ -262,506 +262,506 @@ export default function AdminDashboard() {
 
       {!authLoading && user && token && (
         <>
-      {/* Navbar */}
-      <nav className="border-b border-gray-800 bg-black/50 backdrop-blur">
-        <div className="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
-          <h1 className="text-2xl font-bold">Admin Panel</h1>
-          <button
-            onClick={logout}
-            className="px-4 py-2 bg-red-600 hover:bg-red-700 rounded-lg transition"
-          >
-            Logout
-          </button>
-        </div>
-      </nav>
-
-      <div className="max-w-7xl mx-auto px-4 py-8">
-        {/* Message Alert */}
-        {message.text && (
-          <div
-            className={`mb-4 p-4 rounded-lg ${
-              message.type === "success"
-                ? "bg-green-900/30 border border-green-700 text-green-300"
-                : "bg-red-900/30 border border-red-700 text-red-300"
-            }`}
-          >
-            {message.text}
-          </div>
-        )}
-
-        {/* Tab Navigation */}
-        <div className="flex gap-2 mb-8 border-b border-gray-800 overflow-x-auto pb-4">
-          <button
-            onClick={() => handleTabChange("stats")}
-            className={`flex items-center gap-2 px-4 py-2 rounded-lg transition ${
-              activeTab === "stats"
-                ? "bg-blue-600 text-white"
-                : "text-gray-400 hover:text-white"
-            }`}
-          >
-            <BarChart3 size={20} /> Dashboard
-          </button>
-          <button
-            onClick={() => handleTabChange("users")}
-            className={`flex items-center gap-2 px-4 py-2 rounded-lg transition ${
-              activeTab === "users"
-                ? "bg-blue-600 text-white"
-                : "text-gray-400 hover:text-white"
-            }`}
-          >
-            <Users size={20} /> Users
-          </button>
-          <button
-            onClick={() => handleTabChange("blogs")}
-            className={`flex items-center gap-2 px-4 py-2 rounded-lg transition ${
-              activeTab === "blogs"
-                ? "bg-blue-600 text-white"
-                : "text-gray-400 hover:text-white"
-            }`}
-          >
-            <FileText size={20} /> Blogs
-          </button>
-          <button
-            onClick={() => handleTabChange("projects")}
-            className={`flex items-center gap-2 px-4 py-2 rounded-lg transition ${
-              activeTab === "projects"
-                ? "bg-blue-600 text-white"
-                : "text-gray-400 hover:text-white"
-            }`}
-          >
-            <Briefcase size={20} /> Projects
-          </button>
-        </div>
-
-        {/* STATS TAB */}
-        {activeTab === "stats" && (
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <div className="bg-gradient-to-br from-blue-600 to-blue-800 p-6 rounded-lg">
-              <div className="text-gray-300 text-sm mb-2">Total Users</div>
-              <div className="text-4xl font-bold">{stats?.totalUsers || 0}</div>
+          {/* Navbar */}
+          <nav className="border-b border-gray-800 bg-black/50 backdrop-blur">
+            <div className="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
+              <h1 className="text-2xl font-bold">Admin Panel</h1>
+              <button
+                onClick={logout}
+                className="px-4 py-2 bg-red-600 hover:bg-red-700 rounded-lg transition"
+              >
+                Logout
+              </button>
             </div>
-            <div className="bg-gradient-to-br from-purple-600 to-purple-800 p-6 rounded-lg">
-              <div className="text-gray-300 text-sm mb-2">Total Blogs</div>
-              <div className="text-4xl font-bold">{stats?.totalBlogs || 0}</div>
-              <div className="text-sm text-gray-300 mt-2">
-                {stats?.publishedBlogs} published
+          </nav>
+
+          <div className="max-w-7xl mx-auto px-4 py-8">
+            {/* Message Alert */}
+            {message.text && (
+              <div
+                className={`mb-4 p-4 rounded-lg ${
+                  message.type === "success"
+                    ? "bg-green-900/30 border border-green-700 text-green-300"
+                    : "bg-red-900/30 border border-red-700 text-red-300"
+                }`}
+              >
+                {message.text}
               </div>
+            )}
+
+            {/* Tab Navigation */}
+            <div className="flex gap-2 mb-8 border-b border-gray-800 overflow-x-auto pb-4">
+              <button
+                onClick={() => handleTabChange("stats")}
+                className={`flex items-center gap-2 px-4 py-2 rounded-lg transition ${
+                  activeTab === "stats"
+                    ? "bg-blue-600 text-white"
+                    : "text-gray-400 hover:text-white"
+                }`}
+              >
+                <BarChart3 size={20} /> Dashboard
+              </button>
+              <button
+                onClick={() => handleTabChange("users")}
+                className={`flex items-center gap-2 px-4 py-2 rounded-lg transition ${
+                  activeTab === "users"
+                    ? "bg-blue-600 text-white"
+                    : "text-gray-400 hover:text-white"
+                }`}
+              >
+                <Users size={20} /> Users
+              </button>
+              <button
+                onClick={() => handleTabChange("blogs")}
+                className={`flex items-center gap-2 px-4 py-2 rounded-lg transition ${
+                  activeTab === "blogs"
+                    ? "bg-blue-600 text-white"
+                    : "text-gray-400 hover:text-white"
+                }`}
+              >
+                <FileText size={20} /> Blogs
+              </button>
+              <button
+                onClick={() => handleTabChange("projects")}
+                className={`flex items-center gap-2 px-4 py-2 rounded-lg transition ${
+                  activeTab === "projects"
+                    ? "bg-blue-600 text-white"
+                    : "text-gray-400 hover:text-white"
+                }`}
+              >
+                <Briefcase size={20} /> Projects
+              </button>
             </div>
-            <div className="bg-gradient-to-br from-green-600 to-green-800 p-6 rounded-lg">
-              <div className="text-gray-300 text-sm mb-2">Total Projects</div>
-              <div className="text-4xl font-bold">{stats?.totalProjects || 0}</div>
-              <div className="text-sm text-gray-300 mt-2">
-                {stats?.publicProjects} public
+
+            {/* STATS TAB */}
+            {activeTab === "stats" && (
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div className="bg-gradient-to-br from-blue-600 to-blue-800 p-6 rounded-lg">
+                  <div className="text-gray-300 text-sm mb-2">Total Users</div>
+                  <div className="text-4xl font-bold">{stats?.totalUsers || 0}</div>
+                </div>
+                <div className="bg-gradient-to-br from-purple-600 to-purple-800 p-6 rounded-lg">
+                  <div className="text-gray-300 text-sm mb-2">Total Blogs</div>
+                  <div className="text-4xl font-bold">{stats?.totalBlogs || 0}</div>
+                  <div className="text-sm text-gray-300 mt-2">
+                    {stats?.publishedBlogs} published
+                  </div>
+                </div>
+                <div className="bg-gradient-to-br from-green-600 to-green-800 p-6 rounded-lg">
+                  <div className="text-gray-300 text-sm mb-2">Total Projects</div>
+                  <div className="text-4xl font-bold">{stats?.totalProjects || 0}</div>
+                  <div className="text-sm text-gray-300 mt-2">
+                    {stats?.publicProjects} public
+                  </div>
+                </div>
               </div>
-            </div>
-          </div>
-        )}
+            )}
 
-        {/* USERS TAB */}
-        {activeTab === "users" && (
-          <div>
-            <div className="mb-6">
-              <button
-                onClick={loadUsers}
-                className="px-4 py-2 bg-blue-600 hover:bg-blue-700 rounded-lg flex items-center gap-2 transition"
-              >
-                <Plus size={20} /> Load Users
-              </button>
-            </div>
-            <div className="space-y-4">
-              {users.map((user) => (
-                <div
-                  key={user._id}
-                  className="bg-gray-900 border border-gray-800 p-6 rounded-lg"
-                >
-                  {editingId === user._id ? (
-                    <div className="space-y-4">
-                      <div>
-                        <label className="block text-sm mb-2">Name</label>
-                        <input
-                          type="text"
-                          value={editData.name}
-                          onChange={(e) =>
-                            setEditData({ ...editData, name: e.target.value })
-                          }
-                          className="w-full bg-gray-800 border border-gray-700 rounded px-3 py-2 text-white focus:outline-none focus:border-blue-500"
-                        />
-                      </div>
-                      <div>
-                        <label className="block text-sm mb-2">Email</label>
-                        <input
-                          type="email"
-                          value={editData.email}
-                          onChange={(e) =>
-                            setEditData({ ...editData, email: e.target.value })
-                          }
-                          className="w-full bg-gray-800 border border-gray-700 rounded px-3 py-2 text-white focus:outline-none focus:border-blue-500"
-                        />
-                      </div>
-                      <div>
-                        <label className="block text-sm mb-2">Role</label>
-                        <select
-                          value={editData.role}
-                          onChange={(e) =>
-                            setEditData({ ...editData, role: e.target.value })
-                          }
-                          className="w-full bg-gray-800 border border-gray-700 rounded px-3 py-2 text-white focus:outline-none focus:border-blue-500"
-                        >
-                          <option value="user">User</option>
-                          <option value="admin">Admin</option>
-                        </select>
-                      </div>
-                      <div className="flex gap-2">
-                        <button
-                          onClick={handleSaveUser}
-                          className="px-4 py-2 bg-green-600 hover:bg-green-700 rounded flex items-center gap-2 transition"
-                        >
-                          <Check size={18} /> Save
-                        </button>
-                        <button
-                          onClick={() => setEditingId(null)}
-                          className="px-4 py-2 bg-gray-700 hover:bg-gray-600 rounded flex items-center gap-2 transition"
-                        >
-                          <X size={18} /> Cancel
-                        </button>
-                      </div>
-                    </div>
-                  ) : (
-                    <div className="flex justify-between items-center">
-                      <div>
-                        <div className="font-semibold">{user.name}</div>
-                        <div className="text-gray-400 text-sm">{user.email}</div>
-                        <div className="text-gray-500 text-xs mt-2">
-                          Role: <span className="capitalize">{user.role}</span>
-                        </div>
-                      </div>
-                      <div className="flex gap-2">
-                        <button
-                          onClick={() => handleEditUser(user)}
-                          className="p-2 bg-blue-600 hover:bg-blue-700 rounded transition"
-                        >
-                          <Edit2 size={18} />
-                        </button>
-                        <button
-                          onClick={() => handleDeleteUser(user._id)}
-                          className="p-2 bg-red-600 hover:bg-red-700 rounded transition"
-                        >
-                          <Trash2 size={18} />
-                        </button>
-                      </div>
-                    </div>
-                  )}
+            {/* USERS TAB */}
+            {activeTab === "users" && (
+              <div>
+                <div className="mb-6">
+                  <button
+                    onClick={loadUsers}
+                    className="px-4 py-2 bg-blue-600 hover:bg-blue-700 rounded-lg flex items-center gap-2 transition"
+                  >
+                    <Plus size={20} /> Load Users
+                  </button>
                 </div>
-              ))}
-            </div>
-          </div>
-        )}
-
-        {/* BLOGS TAB */}
-        {activeTab === "blogs" && (
-          <div>
-            <div className="mb-6">
-              <button
-                onClick={loadBlogs}
-                className="px-4 py-2 bg-blue-600 hover:bg-blue-700 rounded-lg flex items-center gap-2 transition"
-              >
-                <Plus size={20} /> Load Blogs
-              </button>
-            </div>
-            <div className="space-y-4">
-              {blogs.map((blog) => (
-                <div
-                  key={blog._id}
-                  className="bg-gray-900 border border-gray-800 p-6 rounded-lg"
-                >
-                  {editingId === blog._id ? (
-                    <div className="space-y-4">
-                      <div>
-                        <label className="block text-sm mb-2">Title</label>
-                        <input
-                          type="text"
-                          value={editData.title}
-                          onChange={(e) =>
-                            setEditData({ ...editData, title: e.target.value })
-                          }
-                          className="w-full bg-gray-800 border border-gray-700 rounded px-3 py-2 text-white focus:outline-none focus:border-blue-500"
-                        />
-                      </div>
-                      <div>
-                        <label className="block text-sm mb-2">Content</label>
-                        <textarea
-                          value={editData.content}
-                          onChange={(e) =>
-                            setEditData({
-                              ...editData,
-                              content: e.target.value,
-                            })
-                          }
-                          rows="4"
-                          className="w-full bg-gray-800 border border-gray-700 rounded px-3 py-2 text-white focus:outline-none focus:border-blue-500"
-                        ></textarea>
-                      </div>
-                      <div>
-                        <label className="block text-sm mb-2">Excerpt</label>
-                        <input
-                          type="text"
-                          value={editData.excerpt}
-                          onChange={(e) =>
-                            setEditData({
-                              ...editData,
-                              excerpt: e.target.value,
-                            })
-                          }
-                          className="w-full bg-gray-800 border border-gray-700 rounded px-3 py-2 text-white focus:outline-none focus:border-blue-500"
-                        />
-                      </div>
-                      <div>
-                        <label className="block text-sm mb-2">
-                          Tags (comma separated)
-                        </label>
-                        <input
-                          type="text"
-                          value={editData.tags}
-                          onChange={(e) =>
-                            setEditData({ ...editData, tags: e.target.value })
-                          }
-                          className="w-full bg-gray-800 border border-gray-700 rounded px-3 py-2 text-white focus:outline-none focus:border-blue-500"
-                        />
-                      </div>
-                      <div className="flex items-center">
-                        <input
-                          type="checkbox"
-                          checked={editData.isPublished}
-                          onChange={(e) =>
-                            setEditData({
-                              ...editData,
-                              isPublished: e.target.checked,
-                            })
-                          }
-                          className="w-4 h-4"
-                        />
-                        <label className="ml-2 text-sm">Published</label>
-                      </div>
-                      <div className="flex gap-2">
-                        <button
-                          onClick={handleSaveBlog}
-                          className="px-4 py-2 bg-green-600 hover:bg-green-700 rounded flex items-center gap-2 transition"
-                        >
-                          <Check size={18} /> Save
-                        </button>
-                        <button
-                          onClick={() => setEditingId(null)}
-                          className="px-4 py-2 bg-gray-700 hover:bg-gray-600 rounded flex items-center gap-2 transition"
-                        >
-                          <X size={18} /> Cancel
-                        </button>
-                      </div>
-                    </div>
-                  ) : (
-                    <div className="flex justify-between items-start">
-                      <div className="flex-1">
-                        <div className="font-semibold">{blog.title}</div>
-                        <div className="text-gray-400 text-sm mt-2 line-clamp-2">
-                          {blog.excerpt || blog.content}
-                        </div>
-                        <div className="text-gray-500 text-xs mt-2">
-                          By {blog.author?.name || "Unknown"} |{" "}
-                          {blog.isPublished ? (
-                            <span className="text-green-400">Published</span>
-                          ) : (
-                            <span className="text-yellow-400">Draft</span>
-                          )}
-                        </div>
-                      </div>
-                      <div className="flex gap-2">
-                        <button
-                          onClick={() => handleEditBlog(blog)}
-                          className="p-2 bg-blue-600 hover:bg-blue-700 rounded transition"
-                        >
-                          <Edit2 size={18} />
-                        </button>
-                        <button
-                          onClick={() => handleDeleteBlog(blog._id)}
-                          className="p-2 bg-red-600 hover:bg-red-700 rounded transition"
-                        >
-                          <Trash2 size={18} />
-                        </button>
-                      </div>
-                    </div>
-                  )}
-                </div>
-              ))}
-            </div>
-          </div>
-        )}
-
-        {/* PROJECTS TAB */}
-        {activeTab === "projects" && (
-          <div>
-            <div className="mb-6">
-              <button
-                onClick={loadProjects}
-                className="px-4 py-2 bg-blue-600 hover:bg-blue-700 rounded-lg flex items-center gap-2 transition"
-              >
-                <Plus size={20} /> Load Projects
-              </button>
-            </div>
-            <div className="space-y-4">
-              {projects.map((project) => (
-                <div
-                  key={project._id}
-                  className="bg-gray-900 border border-gray-800 p-6 rounded-lg"
-                >
-                  {editingId === project._id ? (
-                    <div className="space-y-4">
-                      <div>
-                        <label className="block text-sm mb-2">Title</label>
-                        <input
-                          type="text"
-                          value={editData.title}
-                          onChange={(e) =>
-                            setEditData({ ...editData, title: e.target.value })
-                          }
-                          className="w-full bg-gray-800 border border-gray-700 rounded px-3 py-2 text-white focus:outline-none focus:border-blue-500"
-                        />
-                      </div>
-                      <div>
-                        <label className="block text-sm mb-2">Description</label>
-                        <textarea
-                          value={editData.description}
-                          onChange={(e) =>
-                            setEditData({
-                              ...editData,
-                              description: e.target.value,
-                            })
-                          }
-                          rows="3"
-                          className="w-full bg-gray-800 border border-gray-700 rounded px-3 py-2 text-white focus:outline-none focus:border-blue-500"
-                        ></textarea>
-                      </div>
-                      <div>
-                        <label className="block text-sm mb-2">
-                          Tech Stack (comma separated)
-                        </label>
-                        <input
-                          type="text"
-                          value={editData.techStack}
-                          onChange={(e) =>
-                            setEditData({
-                              ...editData,
-                              techStack: e.target.value,
-                            })
-                          }
-                          className="w-full bg-gray-800 border border-gray-700 rounded px-3 py-2 text-white focus:outline-none focus:border-blue-500"
-                        />
-                      </div>
-                      <div>
-                        <label className="block text-sm mb-2">Repository URL</label>
-                        <input
-                          type="url"
-                          value={editData.repoUrl}
-                          onChange={(e) =>
-                            setEditData({
-                              ...editData,
-                              repoUrl: e.target.value,
-                            })
-                          }
-                          className="w-full bg-gray-800 border border-gray-700 rounded px-3 py-2 text-white focus:outline-none focus:border-blue-500"
-                        />
-                      </div>
-                      <div>
-                        <label className="block text-sm mb-2">Live URL</label>
-                        <input
-                          type="url"
-                          value={editData.liveUrl}
-                          onChange={(e) =>
-                            setEditData({
-                              ...editData,
-                              liveUrl: e.target.value,
-                            })
-                          }
-                          className="w-full bg-gray-800 border border-gray-700 rounded px-3 py-2 text-white focus:outline-none focus:border-blue-500"
-                        />
-                      </div>
-                      <div className="flex items-center">
-                        <input
-                          type="checkbox"
-                          checked={editData.isPublic}
-                          onChange={(e) =>
-                            setEditData({
-                              ...editData,
-                              isPublic: e.target.checked,
-                            })
-                          }
-                          className="w-4 h-4"
-                        />
-                        <label className="ml-2 text-sm">Public</label>
-                      </div>
-                      <div className="flex gap-2">
-                        <button
-                          onClick={handleSaveProject}
-                          className="px-4 py-2 bg-green-600 hover:bg-green-700 rounded flex items-center gap-2 transition"
-                        >
-                          <Check size={18} /> Save
-                        </button>
-                        <button
-                          onClick={() => setEditingId(null)}
-                          className="px-4 py-2 bg-gray-700 hover:bg-gray-600 rounded flex items-center gap-2 transition"
-                        >
-                          <X size={18} /> Cancel
-                        </button>
-                      </div>
-                    </div>
-                  ) : (
-                    <div className="flex justify-between items-start">
-                      <div className="flex-1">
-                        <div className="font-semibold">{project.title}</div>
-                        <div className="text-gray-400 text-sm mt-2 line-clamp-2">
-                          {project.description}
-                        </div>
-                        <div className="text-gray-500 text-xs mt-2 flex flex-wrap gap-2">
-                          {project.techStack?.map((tech, i) => (
-                            <span
-                              key={i}
-                              className="bg-gray-800 px-2 py-1 rounded"
+                <div className="space-y-4">
+                  {users.map((user) => (
+                    <div
+                      key={user._id}
+                      className="bg-gray-900 border border-gray-800 p-6 rounded-lg"
+                    >
+                      {editingId === user._id ? (
+                        <div className="space-y-4">
+                          <div>
+                            <label className="block text-sm mb-2">Name</label>
+                            <input
+                              type="text"
+                              value={editData.name}
+                              onChange={(e) =>
+                                setEditData({ ...editData, name: e.target.value })
+                              }
+                              className="w-full bg-gray-800 border border-gray-700 rounded px-3 py-2 text-white focus:outline-none focus:border-blue-500"
+                            />
+                          </div>
+                          <div>
+                            <label className="block text-sm mb-2">Email</label>
+                            <input
+                              type="email"
+                              value={editData.email}
+                              onChange={(e) =>
+                                setEditData({ ...editData, email: e.target.value })
+                              }
+                              className="w-full bg-gray-800 border border-gray-700 rounded px-3 py-2 text-white focus:outline-none focus:border-blue-500"
+                            />
+                          </div>
+                          <div>
+                            <label className="block text-sm mb-2">Role</label>
+                            <select
+                              value={editData.role}
+                              onChange={(e) =>
+                                setEditData({ ...editData, role: e.target.value })
+                              }
+                              className="w-full bg-gray-800 border border-gray-700 rounded px-3 py-2 text-white focus:outline-none focus:border-blue-500"
                             >
-                              {tech}
-                            </span>
-                          ))}
+                              <option value="user">User</option>
+                              <option value="admin">Admin</option>
+                            </select>
+                          </div>
+                          <div className="flex gap-2">
+                            <button
+                              onClick={handleSaveUser}
+                              className="px-4 py-2 bg-green-600 hover:bg-green-700 rounded flex items-center gap-2 transition"
+                            >
+                              <Check size={18} /> Save
+                            </button>
+                            <button
+                              onClick={() => setEditingId(null)}
+                              className="px-4 py-2 bg-gray-700 hover:bg-gray-600 rounded flex items-center gap-2 transition"
+                            >
+                              <X size={18} /> Cancel
+                            </button>
+                          </div>
                         </div>
-                        <div className="text-gray-500 text-xs mt-2">
-                          By {project.owner?.name || "Unknown"} |{" "}
-                          {project.isPublic ? (
-                            <span className="text-green-400">Public</span>
-                          ) : (
-                            <span className="text-yellow-400">Private</span>
-                          )}
+                      ) : (
+                        <div className="flex justify-between items-center">
+                          <div>
+                            <div className="font-semibold">{user.name}</div>
+                            <div className="text-gray-400 text-sm">{user.email}</div>
+                            <div className="text-gray-500 text-xs mt-2">
+                              Role: <span className="capitalize">{user.role}</span>
+                            </div>
+                          </div>
+                          <div className="flex gap-2">
+                            <button
+                              onClick={() => handleEditUser(user)}
+                              className="p-2 bg-blue-600 hover:bg-blue-700 rounded transition"
+                            >
+                              <Edit2 size={18} />
+                            </button>
+                            <button
+                              onClick={() => handleDeleteUser(user._id)}
+                              className="p-2 bg-red-600 hover:bg-red-700 rounded transition"
+                            >
+                              <Trash2 size={18} />
+                            </button>
+                          </div>
                         </div>
-                      </div>
-                      <div className="flex gap-2">
-                        <button
-                          onClick={() => handleEditProject(project)}
-                          className="p-2 bg-blue-600 hover:bg-blue-700 rounded transition"
-                        >
-                          <Edit2 size={18} />
-                        </button>
-                        <button
-                          onClick={() => handleDeleteProject(project._id)}
-                          className="p-2 bg-red-600 hover:bg-red-700 rounded transition"
-                        >
-                          <Trash2 size={18} />
-                        </button>
-                      </div>
+                      )}
                     </div>
-                  )}
+                  ))}
                 </div>
-              ))}
-            </div>
+              </div>
+            )}
+
+            {/* BLOGS TAB */}
+            {activeTab === "blogs" && (
+              <div>
+                <div className="mb-6">
+                  <button
+                    onClick={loadBlogs}
+                    className="px-4 py-2 bg-blue-600 hover:bg-blue-700 rounded-lg flex items-center gap-2 transition"
+                  >
+                    <Plus size={20} /> Load Blogs
+                  </button>
+                </div>
+                <div className="space-y-4">
+                  {blogs.map((blog) => (
+                    <div
+                      key={blog._id}
+                      className="bg-gray-900 border border-gray-800 p-6 rounded-lg"
+                    >
+                      {editingId === blog._id ? (
+                        <div className="space-y-4">
+                          <div>
+                            <label className="block text-sm mb-2">Title</label>
+                            <input
+                              type="text"
+                              value={editData.title}
+                              onChange={(e) =>
+                                setEditData({ ...editData, title: e.target.value })
+                              }
+                              className="w-full bg-gray-800 border border-gray-700 rounded px-3 py-2 text-white focus:outline-none focus:border-blue-500"
+                            />
+                          </div>
+                          <div>
+                            <label className="block text-sm mb-2">Content</label>
+                            <textarea
+                              value={editData.content}
+                              onChange={(e) =>
+                                setEditData({
+                                  ...editData,
+                                  content: e.target.value,
+                                })
+                              }
+                              rows="4"
+                              className="w-full bg-gray-800 border border-gray-700 rounded px-3 py-2 text-white focus:outline-none focus:border-blue-500"
+                            ></textarea>
+                          </div>
+                          <div>
+                            <label className="block text-sm mb-2">Excerpt</label>
+                            <input
+                              type="text"
+                              value={editData.excerpt}
+                              onChange={(e) =>
+                                setEditData({
+                                  ...editData,
+                                  excerpt: e.target.value,
+                                })
+                              }
+                              className="w-full bg-gray-800 border border-gray-700 rounded px-3 py-2 text-white focus:outline-none focus:border-blue-500"
+                            />
+                          </div>
+                          <div>
+                            <label className="block text-sm mb-2">
+                              Tags (comma separated)
+                            </label>
+                            <input
+                              type="text"
+                              value={editData.tags}
+                              onChange={(e) =>
+                                setEditData({ ...editData, tags: e.target.value })
+                              }
+                              className="w-full bg-gray-800 border border-gray-700 rounded px-3 py-2 text-white focus:outline-none focus:border-blue-500"
+                            />
+                          </div>
+                          <div className="flex items-center">
+                            <input
+                              type="checkbox"
+                              checked={editData.isPublished}
+                              onChange={(e) =>
+                                setEditData({
+                                  ...editData,
+                                  isPublished: e.target.checked,
+                                })
+                              }
+                              className="w-4 h-4"
+                            />
+                            <label className="ml-2 text-sm">Published</label>
+                          </div>
+                          <div className="flex gap-2">
+                            <button
+                              onClick={handleSaveBlog}
+                              className="px-4 py-2 bg-green-600 hover:bg-green-700 rounded flex items-center gap-2 transition"
+                            >
+                              <Check size={18} /> Save
+                            </button>
+                            <button
+                              onClick={() => setEditingId(null)}
+                              className="px-4 py-2 bg-gray-700 hover:bg-gray-600 rounded flex items-center gap-2 transition"
+                            >
+                              <X size={18} /> Cancel
+                            </button>
+                          </div>
+                        </div>
+                      ) : (
+                        <div className="flex justify-between items-start">
+                          <div className="flex-1">
+                            <div className="font-semibold">{blog.title}</div>
+                            <div className="text-gray-400 text-sm mt-2 line-clamp-2">
+                              {blog.excerpt || blog.content}
+                            </div>
+                            <div className="text-gray-500 text-xs mt-2">
+                              By {blog.author?.name || "Unknown"} |{" "}
+                              {blog.isPublished ? (
+                                <span className="text-green-400">Published</span>
+                              ) : (
+                                <span className="text-yellow-400">Draft</span>
+                              )}
+                            </div>
+                          </div>
+                          <div className="flex gap-2">
+                            <button
+                              onClick={() => handleEditBlog(blog)}
+                              className="p-2 bg-blue-600 hover:bg-blue-700 rounded transition"
+                            >
+                              <Edit2 size={18} />
+                            </button>
+                            <button
+                              onClick={() => handleDeleteBlog(blog._id)}
+                              className="p-2 bg-red-600 hover:bg-red-700 rounded transition"
+                            >
+                              <Trash2 size={18} />
+                            </button>
+                          </div>
+                        </div>
+                      )}
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
+
+            {/* PROJECTS TAB */}
+            {activeTab === "projects" && (
+              <div>
+                <div className="mb-6">
+                  <button
+                    onClick={loadProjects}
+                    className="px-4 py-2 bg-blue-600 hover:bg-blue-700 rounded-lg flex items-center gap-2 transition"
+                  >
+                    <Plus size={20} /> Load Projects
+                  </button>
+                </div>
+                <div className="space-y-4">
+                  {projects.map((project) => (
+                    <div
+                      key={project._id}
+                      className="bg-gray-900 border border-gray-800 p-6 rounded-lg"
+                    >
+                      {editingId === project._id ? (
+                        <div className="space-y-4">
+                          <div>
+                            <label className="block text-sm mb-2">Title</label>
+                            <input
+                              type="text"
+                              value={editData.title}
+                              onChange={(e) =>
+                                setEditData({ ...editData, title: e.target.value })
+                              }
+                              className="w-full bg-gray-800 border border-gray-700 rounded px-3 py-2 text-white focus:outline-none focus:border-blue-500"
+                            />
+                          </div>
+                          <div>
+                            <label className="block text-sm mb-2">Description</label>
+                            <textarea
+                              value={editData.description}
+                              onChange={(e) =>
+                                setEditData({
+                                  ...editData,
+                                  description: e.target.value,
+                                })
+                              }
+                              rows="3"
+                              className="w-full bg-gray-800 border border-gray-700 rounded px-3 py-2 text-white focus:outline-none focus:border-blue-500"
+                            ></textarea>
+                          </div>
+                          <div>
+                            <label className="block text-sm mb-2">
+                              Tech Stack (comma separated)
+                            </label>
+                            <input
+                              type="text"
+                              value={editData.techStack}
+                              onChange={(e) =>
+                                setEditData({
+                                  ...editData,
+                                  techStack: e.target.value,
+                                })
+                              }
+                              className="w-full bg-gray-800 border border-gray-700 rounded px-3 py-2 text-white focus:outline-none focus:border-blue-500"
+                            />
+                          </div>
+                          <div>
+                            <label className="block text-sm mb-2">Repository URL</label>
+                            <input
+                              type="url"
+                              value={editData.repoUrl}
+                              onChange={(e) =>
+                                setEditData({
+                                  ...editData,
+                                  repoUrl: e.target.value,
+                                })
+                              }
+                              className="w-full bg-gray-800 border border-gray-700 rounded px-3 py-2 text-white focus:outline-none focus:border-blue-500"
+                            />
+                          </div>
+                          <div>
+                            <label className="block text-sm mb-2">Live URL</label>
+                            <input
+                              type="url"
+                              value={editData.liveUrl}
+                              onChange={(e) =>
+                                setEditData({
+                                  ...editData,
+                                  liveUrl: e.target.value,
+                                })
+                              }
+                              className="w-full bg-gray-800 border border-gray-700 rounded px-3 py-2 text-white focus:outline-none focus:border-blue-500"
+                            />
+                          </div>
+                          <div className="flex items-center">
+                            <input
+                              type="checkbox"
+                              checked={editData.isPublic}
+                              onChange={(e) =>
+                                setEditData({
+                                  ...editData,
+                                  isPublic: e.target.checked,
+                                })
+                              }
+                              className="w-4 h-4"
+                            />
+                            <label className="ml-2 text-sm">Public</label>
+                          </div>
+                          <div className="flex gap-2">
+                            <button
+                              onClick={handleSaveProject}
+                              className="px-4 py-2 bg-green-600 hover:bg-green-700 rounded flex items-center gap-2 transition"
+                            >
+                              <Check size={18} /> Save
+                            </button>
+                            <button
+                              onClick={() => setEditingId(null)}
+                              className="px-4 py-2 bg-gray-700 hover:bg-gray-600 rounded flex items-center gap-2 transition"
+                            >
+                              <X size={18} /> Cancel
+                            </button>
+                          </div>
+                        </div>
+                      ) : (
+                        <div className="flex justify-between items-start">
+                          <div className="flex-1">
+                            <div className="font-semibold">{project.title}</div>
+                            <div className="text-gray-400 text-sm mt-2 line-clamp-2">
+                              {project.description}
+                            </div>
+                            <div className="text-gray-500 text-xs mt-2 flex flex-wrap gap-2">
+                              {project.techStack?.map((tech, i) => (
+                                <span
+                                  key={i}
+                                  className="bg-gray-800 px-2 py-1 rounded"
+                                >
+                                  {tech}
+                                </span>
+                              ))}
+                            </div>
+                            <div className="text-gray-500 text-xs mt-2">
+                              By {project.owner?.name || "Unknown"} |{" "}
+                              {project.isPublic ? (
+                                <span className="text-green-400">Public</span>
+                              ) : (
+                                <span className="text-yellow-400">Private</span>
+                              )}
+                            </div>
+                          </div>
+                          <div className="flex gap-2">
+                            <button
+                              onClick={() => handleEditProject(project)}
+                              className="p-2 bg-blue-600 hover:bg-blue-700 rounded transition"
+                            >
+                              <Edit2 size={18} />
+                            </button>
+                            <button
+                              onClick={() => handleDeleteProject(project._id)}
+                              className="p-2 bg-red-600 hover:bg-red-700 rounded transition"
+                            >
+                              <Trash2 size={18} />
+                            </button>
+                          </div>
+                        </div>
+                      )}
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
           </div>
-        )}
         </>
-        )}
-      </div>
+      )}
     </div>
   );
 }

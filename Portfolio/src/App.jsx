@@ -14,6 +14,7 @@ import BlogForm from './adminpanel/Forms/BlogPostForm'
 import ProjectViewPage from './Components/view_pages/ProjectViewPage'
 import BlogViewWrapper from './Components/view_pages/BlogViewWrapper'
 import LogoutPage from './adminpanel/pages/LogoutPage'
+import AdminDashboard from './adminpanel/pages/AdminDashboard'
 //
 
 function App() {
@@ -66,7 +67,8 @@ function App() {
            <Footer/>
           </>
         } />
- <Route path="/createblog" element={<BlogForm />} />
+  <Route path="/createblog" element={<BlogForm />} />
+  <Route path="/admin" element={<AdminDashboard />} />
 
         
       </Routes>

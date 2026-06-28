@@ -15,7 +15,7 @@ import {
 } from "lucide-react";
 
 export default function AdminDashboard() {
-  const { user, token, logout } = useAuth();
+  const { user, token, logout, loading: authLoading } = useAuth();
   const navigate = useNavigate();
   const [activeTab, setActiveTab] = useState("stats");
   const [stats, setStats] = useState(null);
@@ -28,12 +28,18 @@ export default function AdminDashboard() {
   const [message, setMessage] = useState({ type: "", text: "" });
 
   useEffect(() => {
-    if (!user || user.role !== "admin") {
+    // Wait for auth context to finish loading
+    if (authLoading) return;
+    
+    // Check if user exists and has token
+    if (!user || !token) {
       navigate("/login");
       return;
     }
+    
+    // Load stats if user is authenticated
     loadStats();
-  }, [user, navigate]);
+  }, [user, token, authLoading, navigate]);
 
   const showMessage = (type, text) => {
     setMessage({ type, text });
@@ -241,6 +247,21 @@ export default function AdminDashboard() {
 
   return (
     <div className="min-h-screen bg-black text-white">
+      {/* Show loading while checking auth */}
+      {authLoading && (
+        <div className="min-h-screen flex items-center justify-center">
+          <div className="text-xl text-gray-400">Loading...</div>
+        </div>
+      )}
+
+      {!authLoading && (!user || !token) && (
+        <div className="min-h-screen flex items-center justify-center">
+          <div className="text-xl text-red-400">Redirecting to login...</div>
+        </div>
+      )}
+
+      {!authLoading && user && token && (
+        <>
       {/* Navbar */}
       <nav className="border-b border-gray-800 bg-black/50 backdrop-blur">
         <div className="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
@@ -737,6 +758,8 @@ export default function AdminDashboard() {
               ))}
             </div>
           </div>
+        )}
+        </>
         )}
       </div>
     </div>

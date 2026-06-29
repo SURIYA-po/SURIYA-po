@@ -7,7 +7,7 @@ import './AboutPage.css';
 const PERSONAL = {
   name: 'Surya Pokhrel',
   title: 'AI Engineer',
-  subtitle: 'Back-End Developer',
+  subtitle: 'Researcher ',
   email: 'pokhrelsurya703@gmail.com',
   phone: '+977-9826110703',
   location: 'Imadol, Lalitpur, Nepal',
@@ -127,21 +127,7 @@ const TIMELINE = [
       'Trained ensemble models (Random Forest, Extra Trees, HistGradientBoosting) on CICIDS2017 dataset; integrated locally-hosted LLMs via Ollama for contextual threat analysis.',
       'Delivered structured AI/ML training sessions covering machine learning, prompt engineering, cybersecurity, and digital literacy to students and professionals.',
     ],
-  },
-  {
-    id: 8,
-    icon: '🏆',
-    type: 'achievement',
-    role: 'NAST Research Proposal Accepted',
-    org: 'Nepal Academy of Science and Technology',
-    period: 'June 2026',
-    isCurrent: false,
-    location: '📍 Kathmandu, Nepal',
-    bullets: [
-      'Co-authored and submitted Cyber Surakshya — a funded multi-agent AI cybersecurity research proposal — accepted by NAST.',
-      'Recognised as a legitimate scientific research contribution to national cybersecurity infrastructure.',
-    ],
-  },
+  }
 ];
 
 const SKILLS = [

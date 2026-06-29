@@ -15,7 +15,9 @@ import ProjectViewPage from './Components/view_pages/ProjectViewPage'
 import BlogViewWrapper from './Components/view_pages/BlogViewWrapper'
 import LogoutPage from './adminpanel/pages/LogoutPage'
 import AdminDashboard from './adminpanel/pages/AdminDashboard'
+import AboutPage from './Components/AboutPage'
 //
+
 
 function App() {
   return (
@@ -60,6 +62,16 @@ function App() {
         <Route path="/logout" element={<LogoutPage />} />
         <Route path="/register" element={<RegisterForm />} />
         <Route path="/createproject" element={<ProjectForm />} />
+
+        {/* About Page Route */}
+        <Route path="/about" element={
+          <>
+            <HeaderComponent/>
+            <AboutPage/>
+            <Footer/>
+          </>
+        } />
+
        <Route path="/blog" element={
           <>
            <HeaderComponent/>

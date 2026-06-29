@@ -63,7 +63,7 @@ function HeaderComponent() {
            <li><Link to="/">Services</Link></li>
           <li><Link to="/portfolio">Portfolio</Link></li>
                     <li><Link to="/blog">Blog</Link></li>
-          <li><a href="#about">About me</a></li>
+          <li><Link to="/about">About me</Link></li>
           <li> <a href="https://wa.me/9779800000000" target="_blank" rel="noopener noreferrer">Contact</a></li>
         </ul>
       </div>
@@ -74,7 +74,7 @@ function HeaderComponent() {
           <li><Link to="/portfolio">Portfolio</Link></li>
                               <li><Link to="/blog">Blog</Link></li>
 
-          <li><a href="#about">About me</a></li>
+          <li><Link to="/about">About me</Link></li>
           <li><a href="https://wa.me/9779826110703" target="_blank" rel="noopener noreferrer">Contact</a></li>
         </ul>
       </div>

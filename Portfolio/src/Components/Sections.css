@@ -4,31 +4,20 @@
     padding: 50px;
     text-align: center;
    
-    background-image: url('lamoone.svg')
-    ;
-    background-size: 80%;
-    background-position:100px 50px;
-    
+    background-image: url('lamoone.svg');
+    background-size: 80% 90%;       /* constrain both axes so it stays inside */
+    background-position: center 0px; /* centre horizontally, flush with top */
     background-repeat: no-repeat;
-    background-blend-mode:lighten;
-    backface-visibility:inherit;
-    
-    background-position: 130px -0px
-
-  
+    background-blend-mode: lighten;
+    backface-visibility: inherit;
   }
-  .services-section{
-    background-image: url(lamotwo.svg),url('pattern.svg');
-    ;
-    background-size: 80%,30%;
-    background-position: 130px 420px ,center;
-    
-    background-repeat: no-repeat,repeat;
-    background-blend-mode:lighten,overlay;
-
-  
-
-}
+  .services-section {
+    background-image: url(lamotwo.svg), url('pattern.svg');
+    background-size: 80% 90%, 30%;  /* constrain lamotwo height; pattern unchanged */
+    background-position: center 0px, center; /* centre lamotwo horizontally */
+    background-repeat: no-repeat, repeat;
+    background-blend-mode: lighten, overlay;
+  }
 
 
   .services-cards{

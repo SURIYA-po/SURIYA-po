@@ -105,8 +105,8 @@
 
 .footer-home-bg {
     background-image: url(lamotwo.svg);
-    background-size: 80%;
-    background-position: 130px -1248px;
+    background-size: 90% auto;        /* was 80% — let height be auto */
+    background-position: center top;  /* was 130px -1248px (way off-screen) */
     background-repeat: no-repeat;
     background-blend-mode: lighten;
 }

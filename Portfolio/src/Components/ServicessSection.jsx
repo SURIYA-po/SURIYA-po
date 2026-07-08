@@ -103,68 +103,100 @@ const PortfolioSection = () => {
                 <h2 className='headers'>[Services]</h2>
                 <h3>Crafting Solutions AI agents <br />One Project at a Time</h3>
 
-                <div className="services-cards">
-                    <div className="card">
-                        <div className="icon">
-                            <img src="/assets/Homepage_Services_1 (1).png" alt="The girl at the laptop" />
+                <div className="services-cards svc-grid">
+
+                    {/* Card 1 — What I Can Do */}
+                    <div className="svc-card">
+                        <div className="svc-num">01</div>
+                        <div className="svc-icon-wrap">
+                            {/* Developer boy at laptop SVG */}
+                            <svg className="svc-svg" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <circle cx="40" cy="22" r="12" fill="#bef842" opacity="0.15" stroke="#bef842" strokeWidth="1.5"/>
+                                <circle cx="40" cy="20" r="7" fill="#bef842" opacity="0.35"/>
+                                <path d="M26 46c0-7.7 6.3-14 14-14s14 6.3 14 14" stroke="#bef842" strokeWidth="2" strokeLinecap="round"/>
+                                <rect x="18" y="46" width="44" height="26" rx="4" fill="#222" stroke="#bef842" strokeWidth="1.5"/>
+                                <rect x="22" y="50" width="36" height="17" rx="2" fill="#111"/>
+                                <text x="30" y="62" fill="#bef842" fontSize="9" fontFamily="monospace">&lt;/&gt;</text>
+                                <rect x="34" y="72" width="12" height="3" rx="1.5" fill="#bef842" opacity="0.5"/>
+                            </svg>
                         </div>
-                        <h4 className="headers">What I can do for you</h4>
-                        <p>Faster, better products that your users love. Here are the services I provide:</p>
-                        <ul>
-
-                        
-                            <li>AI Agent Development</li>
-
-                            <li> AI integartion and Automation </li>
-
-                            <li>Data Science & Machine Learning</li>
-
-                            <li>API Development & Integration</li>
-                            
-                             <li>Full-Stack Web Development</li>
-
-                             <li> AI in Security </li>
-
-                            
-                          
-                
-                        </ul>
+                        <div className="svc-body">
+                            <h4 className="svc-title">What I Can Do</h4>
+                            <p className="svc-desc">Faster, better products your users will love. Here's what I build:</p>
+                            <ul className="svc-list">
+                                <li>AI Agent Development</li>
+                                <li>AI Integration &amp; Automation</li>
+                                <li>Data Science &amp; Machine Learning</li>
+                                <li>API Development &amp; Integration</li>
+                                <li>Full-Stack Web Development</li>
+                                <li>AI in Cybersecurity</li>
+                            </ul>
+                        </div>
                     </div>
 
-                    <div className="card">
-                        <div className="icon">
-                            <img src="/assets/Homepage_Services_2.avif" alt="The girl at the laptop" />
+                    {/* Card 2 — Tech Stack */}
+                    <div className="svc-card">
+                        <div className="svc-num">02</div>
+                        <div className="svc-icon-wrap">
+                            {/* Gear / tools SVG */}
+                            <svg className="svc-svg" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <circle cx="40" cy="40" r="10" fill="#bef842" opacity="0.15" stroke="#bef842" strokeWidth="1.5"/>
+                                <circle cx="40" cy="40" r="5" fill="#bef842" opacity="0.5"/>
+                                <path d="M40 18v6M40 56v6M18 40h6M56 40h6" stroke="#bef842" strokeWidth="2" strokeLinecap="round"/>
+                                <path d="M24.7 24.7l4.2 4.3M51.1 51.1l4.2 4.2M24.7 55.3l4.2-4.2M51.1 28.9l4.2-4.2" stroke="#bef842" strokeWidth="2" strokeLinecap="round"/>
+                                <rect x="12" y="14" width="18" height="12" rx="3" fill="#222" stroke="#bef842" strokeWidth="1.2"/>
+                                <text x="16" y="23" fill="#bef842" fontSize="7" fontFamily="monospace">Py</text>
+                                <rect x="50" y="14" width="18" height="12" rx="3" fill="#222" stroke="#fef470" strokeWidth="1.2"/>
+                                <text x="53" y="23" fill="#fef470" fontSize="7" fontFamily="monospace">AI</text>
+                                <rect x="50" y="54" width="18" height="12" rx="3" fill="#222" stroke="#bef842" strokeWidth="1.2"/>
+                                <text x="53" y="63" fill="#bef842" fontSize="6" fontFamily="monospace">API</text>
+                                <rect x="12" y="54" width="18" height="12" rx="3" fill="#222" stroke="#fef470" strokeWidth="1.2"/>
+                                <text x="14" y="63" fill="#fef470" fontSize="6" fontFamily="monospace">SQL</text>
+                            </svg>
                         </div>
-                        <h4 className="headers">Languages and Frameworks</h4>
-                        <p>Every developer requires the right tool for the problem. I'm proficient in:</p>
-                        <ul> 
-                              <li>Python</li>
-                            <li>Java</li>
-                            <li>
-                                langchain 
-                            </li>
-                            <li> pinecone </li>
-                            <li>LangSmith </li>
-                            <li>FastAPI</li>
-                             <li>Spring Boot</li>
-
-                
-                          
-                        </ul>
+                        <div className="svc-body">
+                            <h4 className="svc-title">Languages &amp; Frameworks</h4>
+                            <p className="svc-desc">Every problem needs the right tool. My core stack:</p>
+                            <ul className="svc-list">
+                                <li>Python &amp; Java</li>
+                                <li>LangChain &amp; LangGraph</li>
+                                <li>Pinecone &amp; LangSmith</li>
+                                <li>FastAPI &amp; Spring Boot</li>
+                                <li>React &amp; Node.js</li>
+                                <li>PyTorch &amp; scikit-learn</li>
+                            </ul>
+                        </div>
                     </div>
 
-                    <div className="card">
-                        <div className="icon">
-                            <img src="/assets/Homepage_Services_3.avif" alt="The girl at the laptop" />
+                    {/* Card 3 — What to Expect */}
+                    <div className="svc-card">
+                        <div className="svc-num">03</div>
+                        <div className="svc-icon-wrap">
+                            {/* Rocket / delivery SVG */}
+                            <svg className="svc-svg" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M40 10 C40 10, 55 20, 55 40 L55 55 L40 62 L25 55 L25 40 C25 20, 40 10, 40 10Z" fill="#bef842" opacity="0.1" stroke="#bef842" strokeWidth="1.5"/>
+                                <circle cx="40" cy="36" r="6" fill="#bef842" opacity="0.4"/>
+                                <circle cx="40" cy="36" r="3" fill="#bef842"/>
+                                <path d="M25 54 L18 62 L28 60 L30 50" fill="#bef842" opacity="0.3" stroke="#bef842" strokeWidth="1"/>
+                                <path d="M55 54 L62 62 L52 60 L50 50" fill="#bef842" opacity="0.3" stroke="#bef842" strokeWidth="1"/>
+                                <path d="M34 62 L36 72 L40 68 L44 72 L46 62" fill="#fef470" opacity="0.4" stroke="#fef470" strokeWidth="1"/>
+                                <path d="M22 44 L16 42 L18 38" stroke="#bef842" strokeWidth="1.5" strokeLinecap="round"/>
+                                <path d="M58 44 L64 42 L62 38" stroke="#bef842" strokeWidth="1.5" strokeLinecap="round"/>
+                            </svg>
                         </div>
-                        <h4 className="headers">What you can expect</h4>
-                        <p> A full system that delivers on its promises </p>
-                        <ul>
-                            <li>Robust and Functional</li>
-                            <li>Optimized and Well Documented</li>
-                            <li>Efficient and Easily Maintainable</li>
-                        </ul>
+                        <div className="svc-body">
+                            <h4 className="svc-title">What You Can Expect</h4>
+                            <p className="svc-desc">I build systems that go beyond aesthetics and truly deliver:</p>
+                            <ul className="svc-list">
+                                <li>Robust &amp; Production-Ready</li>
+                                <li>Optimized &amp; Well Documented</li>
+                                <li>Efficient &amp; Maintainable</li>
+                                <li>Secure &amp; Scalable Architecture</li>
+                                <li>Clear Communication &amp; Updates</li>
+                            </ul>
+                        </div>
                     </div>
+
                 </div>
             </section>
 

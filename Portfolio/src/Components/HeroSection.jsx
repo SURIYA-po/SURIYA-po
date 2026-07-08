@@ -9,7 +9,7 @@ const HeroSection = () => {
         <h2  className='headings2'>I'm Surya</h2>
         <h1 className='headings1'><span>AI</span><span className='span2'>Engineer</span>&amp;</h1> <br></br><h1  className='headings1'><span>Re</span>searcher</h1>
         <p className='paragraphs'> 
-         JJust look at the power of AI. Nothing can match its potential. From farmers to lawmakers, from students to teachers, from doctors to engineers ,AI is transforming the way everyone works and learns. Those who understand and harness the power of AI will help shape the future.
+         Just look at the power of AI. Nothing can match its potential. From farmers to lawmakers, from students to teachers, from doctors to engineers ,AI is transforming the way everyone works and learns. Those who understand and harness the power of AI will help shape the future.
 
 I believe I chose the right path. With AI, ideas can become reality, and what once seemed impossible becomes possible. Every business will evolve with intelligent systems, and I want to be part of building that future.
 

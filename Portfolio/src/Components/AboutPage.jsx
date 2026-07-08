@@ -23,8 +23,8 @@ const STATS = [
   { num: '3.8', label: 'GPA / 4.0', suffix: '' },
   { num: '5+', label: 'Projects Built', suffix: '' },
   { num: '2+', label: 'Years Experience', suffix: '' },
-  { num: '1', label: 'NAST Research Accepted', suffix: '' },
-];
+]
+  
 
 const TIMELINE = [
   {
@@ -45,9 +45,9 @@ const TIMELINE = [
   {
     id: 2,
     icon: '💻',
-    type: 'volunteer',
-    role: 'Member — Curriculum & Web Development',
-    org: 'HP Tech Student Club, NCIT',
+    type: 'Teamwork',
+    role: 'Founder Member & Developer',
+    org: 'HP Tech ',
     period: 'Sep 2022 – Jun 2024',
     isCurrent: false,
     location: '📍 Lalitpur, Nepal',
@@ -56,22 +56,9 @@ const TIMELINE = [
       'Collaborated on designing and developing websites for the club and external clients.',
     ],
   },
+ 
   {
     id: 3,
-    icon: '🔒',
-    type: 'achievement',
-    role: 'IntelliScan — Automated Network Defense Monitor',
-    org: 'Personal Project',
-    period: '2023',
-    isCurrent: false,
-    location: '🌐 Python · scikit-learn · Streamlit',
-    bullets: [
-      'Engineered an ML-powered network security dashboard that classifies intrusions in real time from raw log data.',
-      'Built end-to-end Python pipeline with interactive Streamlit interface, dynamic threat visualizations, and automated alerts.',
-    ],
-  },
-  {
-    id: 4,
     icon: '🌱',
     type: 'achievement',
     role: 'Krishi Sathi — IoT Smart Farming Application',
@@ -85,7 +72,7 @@ const TIMELINE = [
     ],
   },
   {
-    id: 5,
+    id: 4,
     icon: '📊',
     type: 'achievement',
     role: 'ML & Data Analysis Portfolio',
@@ -99,7 +86,7 @@ const TIMELINE = [
     ],
   },
   {
-    id: 6,
+    id: 5,
     icon: '📋',
     type: 'achievement',
     role: 'Sajilo Hajiri — Digital Attendance Management System',
@@ -113,7 +100,7 @@ const TIMELINE = [
     ],
   },
   {
-    id: 7,
+    id: 6,
     icon: '🤖',
     type: 'work',
     role: 'AI Engineer Intern — Agentic AI & AI/ML Trainer',
@@ -193,17 +180,8 @@ const PROJECTS = [
     stack: ['React Native', 'Firebase', 'ESP32', 'IoT'],
     link: 'https://github.com/SURIYA-po',
     featured: false,
-  },
-  {
-    id: 4,
-    icon: '🔒',
-    name: 'IntelliScan',
-    year: '2023',
-    desc: 'Automated network defense monitor — ML classification pipeline with Streamlit dashboard delivering real-time threat visualizations and automated security alerts.',
-    stack: ['Python', 'scikit-learn', 'Streamlit', 'ML'],
-    link: 'https://github.com/SURIYA-po',
-    featured: false,
-  },
+  }
+
 ];
 
 const AWARDS = [
@@ -212,11 +190,7 @@ const AWARDS = [
     title: 'Merit Scholarship',
     desc: 'Awarded merit-based scholarship by Pokhara University for academic excellence and consistently maintaining a 3.8/4.0 GPA throughout the B.E. program.',
   },
-  {
-    emoji: '🔬',
-    title: 'NAST Research Accepted',
-    desc: 'Co-authored Cyber Surakshya — a funded multi-agent AI cybersecurity proposal accepted by Nepal Academy of Science and Technology in June 2026.',
-  },
+
   {
     emoji: '📚',
     title: 'AI/ML Trainer',

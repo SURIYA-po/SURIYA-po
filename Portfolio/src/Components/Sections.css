@@ -679,3 +679,178 @@ h3{
     padding: 0 8px;
   }
 }
+
+/* =============================================
+   SVC CARDS — NEW SERVICE CARD STYLES
+   All prefixed with .svc- to avoid any conflict
+   ============================================= */
+
+/* Override services-cards flex to use grid when svc-grid is present */
+.services-cards.svc-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  padding: 40px 0;
+  align-items: stretch;
+}
+
+/* Individual card */
+.svc-card {
+  position: relative;
+  background: #1b1c1d;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 18px;
+  padding: 32px 28px 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  transition: border-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+  overflow: hidden;
+}
+
+/* Top gradient accent line */
+.svc-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, #bef842 0%, #fef470 100%);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.4s ease;
+  border-radius: 18px 18px 0 0;
+}
+
+.svc-card:hover::before {
+  transform: scaleX(1);
+}
+
+.svc-card:hover {
+  border-color: rgba(190, 248, 66, 0.25);
+  transform: translateY(-6px);
+  box-shadow: 0 20px 50px rgba(190, 248, 66, 0.07);
+}
+
+/* Number badge */
+.svc-num {
+  font-family: 'Courier New', monospace;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  color: #bef842;
+  background: rgba(190, 248, 66, 0.08);
+  border: 1px solid rgba(190, 248, 66, 0.2);
+  width: fit-content;
+  padding: 3px 10px;
+  border-radius: 20px;
+}
+
+/* SVG icon container */
+.svc-icon-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 90px;
+  height: 90px;
+  background: rgba(190, 248, 66, 0.04);
+  border: 1px solid rgba(190, 248, 66, 0.1);
+  border-radius: 16px;
+  transition: background 0.3s, border-color 0.3s;
+}
+
+.svc-card:hover .svc-icon-wrap {
+  background: rgba(190, 248, 66, 0.08);
+  border-color: rgba(190, 248, 66, 0.25);
+}
+
+.svc-svg {
+  width: 54px;
+  height: 54px;
+}
+
+/* Text body */
+.svc-body {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  flex: 1;
+}
+
+.svc-title {
+  font-family: 'Poppins', sans-serif;
+  font-size: 17px;
+  font-weight: 700;
+  color: #fff;
+  margin: 0;
+  line-height: 1.3;
+}
+
+.svc-desc {
+  font-family: 'Roboto', sans-serif;
+  font-size: 13.5px;
+  color: #7a7a8c;
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* List */
+.svc-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.svc-list li {
+  font-family: 'Roboto', sans-serif;
+  font-size: 13.5px;
+  color: #a7a9be;
+  line-height: 1.5;
+  padding-left: 18px;
+  position: relative;
+  font-weight: 400;
+  /* reset any inherited margin from .card li */
+  margin-bottom: 0;
+  max-width: unset;
+}
+
+.svc-list li::before {
+  content: '▸';
+  position: absolute;
+  left: 0;
+  color: #bef842;
+  font-size: 10px;
+  top: 3px;
+}
+
+/* ---- Responsive ---- */
+@media (max-width: 1024px) {
+  .services-cards.svc-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+  }
+}
+
+@media (max-width: 768px) {
+  .services-cards.svc-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+    padding: 24px 0;
+  }
+
+  .svc-card {
+    padding: 24px 20px 22px;
+  }
+
+  .svc-icon-wrap {
+    width: 72px;
+    height: 72px;
+  }
+
+  .svc-svg {
+    width: 44px;
+    height: 44px;
+  }
+}

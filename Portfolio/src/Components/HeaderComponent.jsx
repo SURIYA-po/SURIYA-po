@@ -4,12 +4,14 @@ import { RxCross2 } from "react-icons/rx";
 import './headerComponent.css';
 import SearchButton from './SearchButton';
 import { Link } from 'react-router-dom';
+import AskQuestion from './AskQuestion';
 
 function HeaderComponent() {
   const [sidebarVisible, setSidebarVisible] = useState(true);
   const [searchVisible, setSearchVisible] = useState(false);
   const [show, setShow] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
+  const [askOpen, setAskOpen] = useState(false);
 
 
   const sidebarRef = useRef(null);
@@ -81,11 +83,12 @@ function HeaderComponent() {
 
       <div className="inquiry-button">
         <SearchButton className="pair" onMessage={handleMessage} />
-        <button className='question' onClick={(e) => { e.preventDefault(); alert("Plz Click Contact"); }}> Any Questions?</button>
+        <button className='question' onClick={(e) => { e.preventDefault(); setAskOpen(true); }}> Any Questions?</button>
       </div>
       <button className="sidebar-toggle" onClick={toggleSidebar}>
         ☰
       </button>
+      {askOpen && <AskQuestion onClose={() => setAskOpen(false)} />}
     </div>
   );
 }

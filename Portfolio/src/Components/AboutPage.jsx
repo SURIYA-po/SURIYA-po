@@ -19,11 +19,7 @@ const PERSONAL = {
     'Final-year Information Technology engineering student with hands-on experience in machine learning, deep learning, agentic AI systems, and cybersecurity. Developing a multi-agent autonomous cyber defense framework at IAC, NAST and delivering AI/ML training to students. Seeking opportunities in AI engineering, machine learning, and data science.',
 };
 
-const STATS = [
-  { num: '3.8', label: 'GPA / 4.0', suffix: '' },
-  { num: '5+', label: 'Projects Built', suffix: '' },
-  { num: '2+', label: 'Years Experience', suffix: '' },
-]
+
   
 
 const TIMELINE = [
@@ -283,17 +279,7 @@ const AboutPage = () => {
         </div>
       </section>
 
-      {/* ====== STATS ====== */}
-      <div className="about-stats">
-        <div className="about-stats-inner">
-          {STATS.map((s, i) => (
-            <div className="about-stat-item" key={i}>
-              <div className="about-stat-num">{s.num}</div>
-              <div className="about-stat-label">{s.label}</div>
-            </div>
-          ))}
-        </div>
-      </div>
+     
 
       {/* ====== TIMELINE ====== */}
       <div className="about-timeline-wrap">

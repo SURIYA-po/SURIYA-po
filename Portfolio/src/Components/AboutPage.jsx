@@ -423,10 +423,10 @@ const AboutPage = () => {
                 }}>
                   <span style={{ fontSize: '48px' }}>🏆</span>
                   <p style={{ color: 'var(--color-accent)', fontFamily: 'var(--font-heading)', fontWeight: 700, fontSize: '14px', margin: 0 }}>
-                    NAST Accepted Research
+                    Cyber Surakshya — Multi-Agent Autonomous Cybersecurity Framework
                   </p>
                   <p style={{ color: 'var(--color-text-muted)', fontSize: '12px', margin: 0, lineHeight: 1.6 }}>
-                    Submitted to Nepal Academy of Science &amp; Technology as a funded research proposal — June 2026.
+                    Submitted to Nepal College of Information Technology  &amp; Dream Project — ongoing on july 2026.
                   </p>
                   <span style={{
                     background: 'var(--color-accent-dim)',

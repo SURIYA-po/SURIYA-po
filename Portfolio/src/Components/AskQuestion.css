@@ -9,11 +9,10 @@
   inset: 0;
   z-index: 99999;
   display: flex;
-  align-items: flex-start;      /* start from top, not center */
+  align-items: center;
   justify-content: center;
-  padding: 96px 20px 24px;      /* 96px = 80px navbar + 16px gap */
-  overflow-y: auto;             /* scroll if panel is taller than safe area */
-  background: rgba(0, 0, 0, 0.78);
+  padding: 20px;
+  background: rgba(0, 0, 0, 0.75);
   backdrop-filter: blur(6px);
   animation: aq-fade-in 0.25s ease;
 }
@@ -30,7 +29,7 @@
   border-radius: 20px;
   width: 100%;
   max-width: 540px;
-  max-height: calc(100vh - 110px); /* viewport minus navbar + padding */
+  max-height: 92vh;
   overflow-y: auto;
   position: relative;
   box-shadow: 0 30px 80px rgba(0, 0, 0, 0.7), 0 0 0 1px rgba(190, 248, 66, 0.06);
@@ -317,13 +316,9 @@
 
 /* ---- Mobile ---- */
 @media (max-width: 600px) {
-  .aq-overlay {
-    padding: 88px 12px 20px; /* slightly less padding on small screens */
-  }
-
   .aq-panel {
     border-radius: 16px;
-    max-height: calc(100vh - 100px);
+    max-height: 96vh;
   }
 
   .aq-header { padding: 28px 20px 0; }

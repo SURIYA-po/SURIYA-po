@@ -98,10 +98,10 @@ const PortfolioSection = () => {
         const observer = new IntersectionObserver(([entry]) => {
             if (entry.isIntersecting) {
                 setPortfolioVisible(true);
-                observer.unobserve(section);
+                observer.unobserve(cardGrid);
             }
         }, { threshold: 0.12, rootMargin: '0px 0px -8% 0px' });
-n
+
         observer.observe(cardGrid);
         return () => observer.disconnect();
     }, []);

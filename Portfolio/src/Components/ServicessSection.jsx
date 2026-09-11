@@ -101,7 +101,7 @@ const PortfolioSection = () => {
             {/* Services Section */}
             <section className="services-section">
                 <h2 className='headers'>[Services]</h2>
-                <h3>Crafting Solutions AI agents <br />One Project at a Time</h3>
+                <h3>Crafting AI agents <br />One Project at a Time</h3>
 
                 <div className="services-cards svc-grid">
 

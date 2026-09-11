@@ -1,11 +1,52 @@
 import React, { useRef, useEffect, useState } from 'react';
 import './Sections.css';
 import TiltCard from './Handletilt';
-import { db } from '../Services/firebase';
-import { collection, getDocs } from 'firebase/firestore';
 import { useNavigate } from 'react-router-dom';
 import projectService from '../adminpanel/services/projectService';
 import ProjectViewPage from './view_pages/ProjectViewPage';
+
+const localProjects = [
+    {
+        id: 'ai-agent-platform',
+        _id: 'ai-agent-platform',
+        title: 'AI Agent Platform',
+        description: 'Autonomous agents for research, workflow automation, and support operations.',
+        techStack: ['Python', 'LangChain', 'FastAPI', 'React'],
+        githubUrl: '#'
+    },
+    {
+        id: 'rag-knowledge-base',
+        _id: 'rag-knowledge-base',
+        title: 'RAG Knowledge Base',
+        description: 'A searchable document intelligence system with grounded AI responses.',
+        techStack: ['LangGraph', 'Pinecone', 'Node.js', 'LLMs'],
+        githubUrl: '#'
+    },
+    {
+        id: 'cyber-monitor',
+        _id: 'cyber-monitor',
+        title: 'Cybersecurity Monitor',
+        description: 'Real-time anomaly detection and security event monitoring dashboard.',
+        techStack: ['Python', 'PyTorch', 'Docker', 'API'],
+        githubUrl: '#'
+    },
+    {
+        id: 'analytics-suite',
+        _id: 'analytics-suite',
+        title: 'Analytics Suite',
+        description: 'Decision-ready data pipelines and interactive business intelligence views.',
+        techStack: ['Java', 'Spring Boot', 'SQL', 'React'],
+        githubUrl: '#'
+    },
+    {
+        id: 'automation-hub',
+        _id: 'automation-hub',
+        title: 'Automation Hub',
+        description: 'Connected workflows that eliminate repetitive operational work.',
+        techStack: ['Node.js', 'FastAPI', 'PostgreSQL', 'Redis'],
+        githubUrl: '#'
+    }
+];
 
 const PortfolioSection = () => {
       const navigate = useNavigate();
@@ -15,28 +56,26 @@ const PortfolioSection = () => {
     };
     const cardRefs = useRef([]);
     const arrowRefs = useRef([]);
-    const [portfolioItems, setPortfolioItems] = useState([]);
+    const portfolioCardsRef = useRef(null);
+    const [portfolioItems] = useState(localProjects);
     const [visibleProjects, setVisibleProjects] = useState(5);
     const [selectedCategory, setSelectedCategory] = useState('All');
-    const [isLoading, setIsLoading] = useState(true);
     const [selectedProject, setSelectedProject] = useState(null);
+    const [portfolioVisible, setPortfolioVisible] = useState(false);
 
-
-    // Fetch projects from Firebase
     useEffect(() => {
-        const fetchProjects = async () => {
-            try {
-                setIsLoading(true);
-                const snapshot = await projectService.getProjects()
-                const items =snapshot.data;
-                setPortfolioItems(items);
-            } catch (error) {
-                console.error('Error fetching projects:', error);
-            } finally {
-                setIsLoading(false);
+        const cardGrid = portfolioCardsRef.current;
+        if (!cardGrid) return undefined;
+
+        const observer = new IntersectionObserver(([entry]) => {
+            if (entry.isIntersecting) {
+                setPortfolioVisible(true);
+                observer.unobserve(section);
             }
-        };
-        fetchProjects();
+        }, { threshold: 0.12, rootMargin: '0px 0px -8% 0px' });
+
+        observer.observe(cardGrid);
+        return () => observer.disconnect();
     }, []);
 
     // Get unique categories
@@ -201,7 +240,7 @@ const PortfolioSection = () => {
             </section>
 
             {/* Portfolio Section */}
-            <section  id="portfolio" className="portfolio-section">
+            <section id="portfolio" className="portfolio-section">
                 <center><h2 className='headers'>[Portfolio]</h2></center>
                 <h3>Dont judge the book by its cover.</h3>
 
@@ -211,19 +250,14 @@ const PortfolioSection = () => {
                 </div>
 
                 {/* Loading State */}
-                {isLoading ? (
-                    <div className="loading-state">
-                        <div className="spinner"></div>
-                        <p>Loading projects...</p>
-                    </div>
-                ) : (
-                    <>
+                <>
                         {/* Portfolio Cards */}
-                        <div className="portfolio-cards">
+                        <div ref={portfolioCardsRef} className="portfolio-cards">
                             {filteredProjects.slice(0, visibleProjects).map((item, index) => (
                                 <div
                                     key={item.id || index}
-                                    className="portfolio-card"
+                                    className={`portfolio-card ${portfolioVisible ? 'portfolio-card--revealed' : ''}`}
+                                    style={{ '--card-delay': `${index * 110}ms` }}
                                     ref={(el) => (cardRefs.current[index] = el)}
                                     onMouseMove={(e) => handleMouseMove(e, index)}
                                     onMouseLeave={() => handleMouseLeave(index)}
@@ -296,8 +330,7 @@ const PortfolioSection = () => {
                                 }
                             </button>
                         )}
-                    </>
-                )}
+                </>
 
                 {/* Project Details Modal */}
                 {selectedProject && ( 

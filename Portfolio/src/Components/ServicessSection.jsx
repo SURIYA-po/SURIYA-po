@@ -57,11 +57,39 @@ const PortfolioSection = () => {
     const cardRefs = useRef([]);
     const arrowRefs = useRef([]);
     const portfolioCardsRef = useRef(null);
-    const [portfolioItems] = useState(localProjects);
+    const [portfolioItems, setPortfolioItems] = useState(localProjects);
+    const [isLoadingProjects, setIsLoadingProjects] = useState(true);
     const [visibleProjects, setVisibleProjects] = useState(5);
     const [selectedCategory, setSelectedCategory] = useState('All');
     const [selectedProject, setSelectedProject] = useState(null);
     const [portfolioVisible, setPortfolioVisible] = useState(false);
+
+    useEffect(() => {
+        let isMounted = true;
+
+        const fetchProjects = async () => {
+            try {
+                const response = await projectService.getProjects();
+                const serverProjects = Array.isArray(response.data) ? response.data : [];
+
+                if (isMounted && serverProjects.length > 0) {
+                    setPortfolioItems(serverProjects);
+                }
+            } catch (error) {
+                console.error('Failed to fetch portfolio projects. Using local projects.', error);
+            } finally {
+                if (isMounted) {
+                    setIsLoadingProjects(false);
+                }
+            }
+        };
+
+        fetchProjects();
+
+        return () => {
+            isMounted = false;
+        };
+    }, []);
 
     useEffect(() => {
         const cardGrid = portfolioCardsRef.current;
@@ -73,7 +101,7 @@ const PortfolioSection = () => {
                 observer.unobserve(section);
             }
         }, { threshold: 0.12, rootMargin: '0px 0px -8% 0px' });
-
+n
         observer.observe(cardGrid);
         return () => observer.disconnect();
     }, []);
@@ -251,11 +279,12 @@ const PortfolioSection = () => {
 
                 {/* Loading State */}
                 <>
+                        {isLoadingProjects && <p className="portfolio-loading">Loading projects...</p>}
                         {/* Portfolio Cards */}
                         <div ref={portfolioCardsRef} className="portfolio-cards">
                             {filteredProjects.slice(0, visibleProjects).map((item, index) => (
                                 <div
-                                    key={item.id || index}
+                                    key={item._id || item.id || index}
                                     className={`portfolio-card ${portfolioVisible ? 'portfolio-card--revealed' : ''}`}
                                     style={{ '--card-delay': `${index * 110}ms` }}
                                     ref={(el) => (cardRefs.current[index] = el)}
@@ -268,10 +297,10 @@ const PortfolioSection = () => {
                                     
                                     <div className="card-content">
                                    
-                                       <h4 className="headers_1">{item.title.length > 50 
+                                       <h4 className="headers_1">{item.title?.length > 50 
                         ? item.title.substring(0, 50) + '...' 
                         : item.title}</h4>
-                                        <p className="para">{item.description.length > 50 
+                                        <p className="para">{item.description?.length > 50 
                         ? item.description.substring(0, 50) + '...' 
                         : item.description
                     } </p>
@@ -289,7 +318,7 @@ const PortfolioSection = () => {
                                         
                                         <div className="pair">
                                             <a 
-                                                href={item.homepage || item.githubUrl} 
+                                                href={item.liveUrl || item.repoUrl || item.homepage || item.githubUrl || '#'} 
                                                 className="view-project" 
                                                 target="_blank" 
                                                 rel="noreferrer"

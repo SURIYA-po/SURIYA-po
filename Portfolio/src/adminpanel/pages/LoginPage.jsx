@@ -36,10 +36,7 @@ const handleSubmit = async (e) => {
     }
 
   } catch (error) {
-    console.error("Login error:", error);
-
-    // Optional: show error message
-    // setError("Invalid email or password");
+    // Handle login error silently or set error message state
   }
 };
 

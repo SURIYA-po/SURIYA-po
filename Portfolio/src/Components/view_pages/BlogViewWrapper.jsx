@@ -16,15 +16,12 @@ const BlogViewWrapper = () => {
     if (id) {
       setLoading(true);
       blogService.getBlogById(id)
-        .then(res=> {
+        .then(res => {
           setBlogData(res.data);
-        console.log(blogData)
           setLoading(false);
         })
         .catch(error => {
-          console.error("Error fetching blog:", error);
           setLoading(false);
-          // Handle error state display here
         });
     }
   }, [id]);

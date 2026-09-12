@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import './ProjectCard.css';
 import SkillTag from './SkillTag';
 
@@ -24,14 +25,12 @@ const ProjectCard = ({ project }) => {
             <SkillTag key={idx} label={tech} />
           ))}
         </div>
-        <a
-          href={project.homepage || project.githubUrl || project.liveUrl || project.repoUrl || '#'}
+        <Link
+          to={`/project_view_page/${project._id || project.id}`}
           className="project-link"
-          target="_blank"
-          rel="noreferrer"
         >
           View Project →
-        </a>
+        </Link>
       </div>
       <div className="card-logo">
         {project.image ? (

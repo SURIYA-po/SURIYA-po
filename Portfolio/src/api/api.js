@@ -80,7 +80,6 @@ api.interceptors.response.use(
       }
     } catch (e) {
       // swallow any parsing error
-      console.warn('Token post-processing failed', e);
     }
     return response;
   },
@@ -101,7 +100,6 @@ api.interceptors.response.use(
           api.defaults.headers.common["Authorization"] = `Bearer ${res.data.access}`;
           return api(originalRequest);
         } catch (err) {
-          console.error("Refresh token expired. Logging out...");
           localStorage.removeItem("access");
           localStorage.removeItem("refresh");
           localStorage.removeItem("user");

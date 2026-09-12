@@ -29,7 +29,7 @@ function Projects() {
         const response = await projectService.getProjects(); 
         setProjectData(response.data);
       } catch (error) {
-        console.error("Failed to fetch projects:", error);
+        // Handle fetch projects error silently
       }
     }
     fetchProjects();
@@ -39,13 +39,9 @@ function Projects() {
   useEffect(() => {
     async function fetchUniqueTags() {
       try {
-        // Assuming you add a new function to projectService 
-        // that calls the new /tags/unique API endpoint
         const response = await projectService.getUniqueTags(); 
         setUniqueTags(response.data);
       } catch (error) {
-        console.error("Failed to fetch unique tags:", error);
-        // Fallback: Optionally set a default tag array if API fails
         setUniqueTags([]);
       }
     }

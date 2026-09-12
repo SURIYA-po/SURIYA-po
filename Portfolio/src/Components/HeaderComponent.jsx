@@ -46,7 +46,6 @@ function HeaderComponent() {
   };
 
   const handleMessage = (msg) => {
-    console.log(msg);
     setSearchVisible(msg);
   }
 

@@ -83,17 +83,10 @@ const handleSubmit = async (e) => {
     // Make API call
     const response = await projectService.createProject(data);
 
-    // Log form data for debugging
-    console.log("Project FormData:", Object.fromEntries(data.entries()));
-
     // Success message
     setSuccess(`Project '${form.title}' submitted successfully!`);
 
-    // Optionally, reset the form
-    // setForm({ title: "", description: "", repoUrl: "", liveUrl: "", isPublic: true, image: null, techStack: [] });
-
   } catch (err) {
-    console.error("Error saving project:", err);
     setError("Failed to save project.");
   } finally {
     setLoading(false);

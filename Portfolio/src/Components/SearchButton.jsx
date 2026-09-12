@@ -56,14 +56,9 @@ function SearchButton({ onMessage }) {
         try {
             // Call the service function with the current search term
             const response = await projectService.getProjects(searchTerm);
-            console.log(response)
-            
-            // Format results for display in the textarea (Title and ID snippet)
             setResults(response.data);
-            
         } catch (error) {
-            console.error("Error fetching search results:", error);
-            setResults("Error fetching results. Check console.");
+            setResults([]);
         } finally {
             setIsLoading(false);
         }

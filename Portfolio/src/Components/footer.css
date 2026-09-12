@@ -104,11 +104,7 @@
 /* Default footer styles... */
 
 .footer-home-bg {
-    background-image: url(lamotwo.svg);
-    background-size: 80%;
-    background-position: 130px -1248px;
-    background-repeat: no-repeat;
-    background-blend-mode: lighten;
+    background-color: #111;
 }
 
 /* ===== MOBILE RESPONSIVE (max-width: 768px) ===== */

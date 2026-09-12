@@ -19,7 +19,7 @@ const PortfolioItems = () => {
         const snap = await getDocs(collection(db, 'My_details'));
         setProjects(snap.docs.map(doc => ({ id: doc.id, ...doc.data() })));
       } catch (e) {
-        console.error(e);
+        // Handle fetch error silently
       } finally {
         setLoading(false);
       }

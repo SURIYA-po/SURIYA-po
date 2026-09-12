@@ -26,7 +26,6 @@ const BlogViewPage = ({ blog }) => {
     excerpt
   } = blog;
 
-  console.log(blog)
   // Helper to format dates
   const formatDate = (dateString) => {
     return new Date(dateString).toLocaleDateString('en-US', {
@@ -56,7 +55,7 @@ const BlogViewPage = ({ blog }) => {
       <style>{contentStyle}</style>
 
       {/* Hero Image */}
-      <div className="w-full h-96 overflow-hidden relative">
+      <div className="w-full h-56 md:h-96 overflow-hidden relative">
         <img
           src={coverImage}
           alt={title}
@@ -66,18 +65,18 @@ const BlogViewPage = ({ blog }) => {
         <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent" />
       </div>
 
-      <article className="max-w-4xl mx-auto px-6 -mt-24 relative z-10">
+      <article className="max-w-4xl mx-auto px-4 md:px-6 -mt-12 md:-mt-24 relative z-10">
         {/* Title and Metadata */}
-        <header className="mb-8 p-6 rounded-xl bg-neutral-900/90 backdrop-blur-sm border border-green-900/40 shadow-xl shadow-green-900/10">
-          <h1 className="text-5xl font-extrabold text-white tracking-tight mb-4">
+        <header className="mb-8 p-4 sm:p-6 rounded-xl bg-neutral-900/95 backdrop-blur-md border border-green-900/40 shadow-xl shadow-green-900/10">
+          <h1 className="text-2xl sm:text-3xl md:text-5xl font-extrabold text-white tracking-tight mb-3 leading-snug">
             {title}
           </h1>
-          <p className="text-xl italic text-green-400 mb-4">{excerpt}</p>
+          {excerpt && <p className="text-base sm:text-lg italic text-green-400 mb-4">{excerpt}</p>}
 
-          <div className="flex flex-wrap items-center gap-4 text-sm text-neutral-400">
+          <div className="flex flex-wrap items-center gap-4 text-xs sm:text-sm text-neutral-400">
             <div className="flex items-center gap-2">
               <User size={16} className="text-green-500" />
-              <span>By **{author?.name || 'Unknown'}**</span>
+              <span>By <strong className="text-white">{author?.name || 'Author'}</strong></span>
             </div>
             <div className="flex items-center gap-2">
               <Calendar size={16} className="text-green-500" />
@@ -87,10 +86,9 @@ const BlogViewPage = ({ blog }) => {
         </header>
 
         {/* Main Content Area */}
-        <div className="bg-neutral-900/50 p-8 rounded-xl border border-neutral-800/50 shadow-lg mb-8">
+        <div className="bg-neutral-900/50 p-4 sm:p-6 md:p-8 rounded-xl border border-neutral-800/50 shadow-lg mb-8">
           <div 
-            className="blog-content text-gray-300 text-lg"
-            // ⚠️ Dangerously set to allow HTML content from the DB to render
+            className="blog-content text-gray-300 text-base md:text-lg leading-relaxed overflow-x-auto"
             dangerouslySetInnerHTML={{ __html: content }} 
           />
         </div>

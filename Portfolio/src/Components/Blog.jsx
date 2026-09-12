@@ -25,7 +25,7 @@ function Blog() {
         const response = await blogService.getBlogs();
         setBlogData(response.data);
       } catch (error) {
-        console.error("Failed to fetch blogs:", error);
+        // Handle blog fetch error silently or set fallback state
       }
     }
     fetchBlogs();

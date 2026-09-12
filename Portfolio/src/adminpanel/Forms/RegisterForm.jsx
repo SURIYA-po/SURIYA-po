@@ -36,10 +36,10 @@ export default function RegisterForm() {
 
     userService.create(data)
     .then((response) => {
-      console.log("User registered successfully:", response);
+      // Success handling
     })
     .catch((error) => {
-      console.error("Error registering user:", error);
+      // Error handling
     });
   
 

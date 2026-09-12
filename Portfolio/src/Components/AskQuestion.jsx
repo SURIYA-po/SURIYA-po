@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
+import ReactDOM from 'react-dom';
 import './AskQuestion.css';
 
 const TOPICS = [
@@ -26,11 +27,18 @@ function AskQuestion({ onClose }) {
   });
   const panelRef = useRef(null);
 
-  /* ── close on Escape ── */
+  /* ── body scroll lock & close on Escape ── */
   useEffect(() => {
+    const originalStyle = window.getComputedStyle(document.body).overflow;
+    document.body.style.overflow = 'hidden';
+
     const handler = (e) => { if (e.key === 'Escape') onClose(); };
     window.addEventListener('keydown', handler);
-    return () => window.removeEventListener('keydown', handler);
+
+    return () => {
+      document.body.style.overflow = originalStyle;
+      window.removeEventListener('keydown', handler);
+    };
   }, [onClose]);
 
   /* ── close on backdrop click ── */
@@ -73,7 +81,7 @@ function AskQuestion({ onClose }) {
     setSubmitted(true);
   };
 
-  return (
+  const modalContent = (
     <div className="aq-overlay" onClick={handleBackdrop} role="dialog" aria-modal="true">
       <div className="aq-panel" ref={panelRef}>
 
@@ -204,6 +212,8 @@ function AskQuestion({ onClose }) {
       </div>
     </div>
   );
+
+  return ReactDOM.createPortal(modalContent, document.body);
 }
 
 export default AskQuestion;

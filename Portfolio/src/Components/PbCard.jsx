@@ -14,7 +14,6 @@ const PbCard = ({ data }) => {
 
   // 1. Determine Card Type and Map Data Fields
   const isPortfolio = !!data.liveUrl || !!data.repoUrl; // Portfolio has live/repo URLs
-console.log(data);
   // Use a map object to structure the data for consistency
   const cardData = {};
 
@@ -77,24 +76,14 @@ console.log(data);
         )}
 
         {/* "View Project" Link for Portfolio Cards */}
-        <div className="pair">
-          <a
-            href={cardData.projectLink}
-            className="view-project"
-            target="_blank"
-            rel="noreferrer"
-            onMouseMove={() => {
-              arrow.style.transform = "rotate(0deg)";
-            }}
-          >
-
-            View project
-          </a>
-          <div
-            className="arrow"
-
-          ></div>
-        </div>
+        {cardData.isPortfolio && (
+          <div className="pair mt-4">
+            <span className="view-project">
+              View project
+            </span>
+            <div className="arrow"></div>
+          </div>
+        )}
 
      
       </div>

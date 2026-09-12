@@ -76,7 +76,7 @@ const PortfolioSection = () => {
                     setPortfolioItems(serverProjects);
                 }
             } catch (error) {
-                console.error('Failed to fetch portfolio projects. Using local projects.', error);
+                // Fallback to local projects silently
             } finally {
                 if (isMounted) {
                     setIsLoadingProjects(false);
@@ -147,8 +147,9 @@ const PortfolioSection = () => {
 
     // Handle project click for modal
     const handleProjectClick = (project) => {
-        console.log(project)
-        setSelectedProject(project);
+        if (project._id || project.id) {
+            navigate(`/project_view_page/${project._id || project.id}`);
+        }
     };
 
     // Close modal
@@ -370,18 +371,12 @@ const PortfolioSection = () => {
 
                                         {/* Card Footer / Action Link */}
                                         <div className="portfolio-card__footer">
-                                            <a 
-                                                href={item.liveUrl || item.repoUrl || item.homepage || item.githubUrl || '#'} 
+                                            <button 
+                                                type="button"
                                                 className="view-project" 
-                                                target="_blank" 
-                                                rel="noreferrer"
                                                 onClick={(e) => {
                                                     e.stopPropagation();
-                                                    const targetUrl = item.liveUrl || item.repoUrl || item.homepage || item.githubUrl;
-                                                    if (!targetUrl || targetUrl === '#') {
-                                                        e.preventDefault();
-                                                        handleProjectClick(item);
-                                                    }
+                                                    handleProjectClick(item);
                                                 }}
                                             >
                                                 <span>View project</span>
@@ -389,7 +384,7 @@ const PortfolioSection = () => {
                                                     className="arrow" 
                                                     ref={(el) => (arrowRefs.current[index] = el)}
                                                 ></span>
-                                            </a>
+                                            </button>
                                         </div>
                                     </div>
                                 </div>

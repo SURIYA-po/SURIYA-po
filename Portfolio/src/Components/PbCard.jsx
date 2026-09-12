@@ -18,31 +18,37 @@ console.log(data);
   // Use a map object to structure the data for consistency
   const cardData = {};
 
+  const parseTags = (tags) => {
+    if (!tags) return [];
+    if (Array.isArray(tags)) return tags;
+    if (typeof tags === 'string') return tags.split(',').map(t => t.trim()).filter(Boolean);
+    return [];
+  };
+
   if (isPortfolio) {
     // Mapping for a Project (Portfolio Item)
     cardData.isPortfolio = true;
-    cardData.subtitle = data.title;
-    cardData.description = data.description.substring(0, 150) + '...';
+    cardData.subtitle = data.title || 'Untitled Project';
+    cardData.description = data.description ? (data.description.length > 150 ? data.description.substring(0, 150) + '...' : data.description) : '';
     cardData.imageSrc = data.image;
-    cardData.tags = data.techStack || [];
-    cardData.projectLink = data.liveUrl || data.repoUrl;
+    cardData.tags = parseTags(data.techStack);
+    cardData.projectLink = data.liveUrl || data.repoUrl || '#';
     cardData.projectLinkText = data.liveUrl ? "View Project ↗" : "View Repo 🔗";
     cardData.date = null;
 
   } else {
     // Mapping for a BlogPost (Blog Item)
     cardData.isPortfolio = false;
-    // Note: The main page title ("Tips and Tricks") is likely external to the card data.
-    // We'll use the Blog Post's title as the subtitle in the card structure.
-    cardData.subtitle = data.title;
-    cardData.description = data.excerpt || data.content.substring(0, 200) + '...';
-    cardData.imageSrc = data.coverImage;
-    cardData.tags = data.tags || [];
+    cardData.subtitle = data.title || 'Untitled Post';
+    const rawDesc = data.excerpt || data.content || '';
+    cardData.description = rawDesc.length > 200 ? rawDesc.substring(0, 200) + '...' : rawDesc;
+    cardData.imageSrc = data.coverImage || data.image;
+    cardData.tags = parseTags(data.tags);
     cardData.projectLink = null;
     cardData.projectLinkText = null;
     cardData.date = data.createdAt ? new Date(data.createdAt).toLocaleDateString('en-US', {
       month: 'short', day: '2-digit', year: '2-digit'
-    }) : 'N/A'; // Format date like "Oct 21, 24"
+    }) : 'N/A';
   }
 
   // 2. JSX Structure (similar to the previous design, but using cardData)

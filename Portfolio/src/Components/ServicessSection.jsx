@@ -162,9 +162,17 @@ const PortfolioSection = () => {
         setVisibleProjects(5); // Reset to show 6 projects when changing category
     };
 
+    // Helper to parse tech stack from Array or comma-separated String
+    const parseTechStack = (techStack) => {
+        if (!techStack) return [];
+        if (Array.isArray(techStack)) return techStack;
+        if (typeof techStack === 'string') return techStack.split(',').map(t => t.trim()).filter(Boolean);
+        return [];
+    };
+
     return ( 
         <section id="services">
-        <div  is="services" className="servicepair">
+        <div is="services" className="servicepair">
             {/* Services Section */}
             <section className="services-section">
                 <h2 className='headers'>[Services]</h2>
@@ -176,7 +184,6 @@ const PortfolioSection = () => {
                     <div className="svc-card">
                         <div className="svc-num">01</div>
                         <div className="svc-icon-wrap">
-                            {/* Developer boy at laptop SVG */}
                             <svg className="svc-svg" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <circle cx="40" cy="22" r="12" fill="#bef842" opacity="0.15" stroke="#bef842" strokeWidth="1.5"/>
                                 <circle cx="40" cy="20" r="7" fill="#bef842" opacity="0.35"/>
@@ -205,7 +212,6 @@ const PortfolioSection = () => {
                     <div className="svc-card">
                         <div className="svc-num">02</div>
                         <div className="svc-icon-wrap">
-                            {/* Gear / tools SVG */}
                             <svg className="svc-svg" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <circle cx="40" cy="40" r="10" fill="#bef842" opacity="0.15" stroke="#bef842" strokeWidth="1.5"/>
                                 <circle cx="40" cy="40" r="5" fill="#bef842" opacity="0.5"/>
@@ -239,7 +245,6 @@ const PortfolioSection = () => {
                     <div className="svc-card">
                         <div className="svc-num">03</div>
                         <div className="svc-icon-wrap">
-                            {/* Rocket / delivery SVG */}
                             <svg className="svc-svg" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M40 10 C40 10, 55 20, 55 40 L55 55 L40 62 L25 55 L25 40 C25 20, 40 10, 40 10Z" fill="#bef842" opacity="0.1" stroke="#bef842" strokeWidth="1.5"/>
                                 <circle cx="40" cy="36" r="6" fill="#bef842" opacity="0.4"/>
@@ -272,17 +277,15 @@ const PortfolioSection = () => {
                 <center><h2 className='headers'>[Portfolio]</h2></center>
                 <h3>Dont judge the book by its cover.</h3>
 
-                {/* Category Filter */}
-                <div className="portfolio-filters">
-                 
-                </div>
-
                 {/* Loading State */}
                 <>
-                        {isLoadingProjects && <p className="portfolio-loading">Loading projects...</p>}
-                        {/* Portfolio Cards */}
-                        <div ref={portfolioCardsRef} className="portfolio-cards">
-                            {filteredProjects.slice(0, visibleProjects).map((item, index) => (
+                    {isLoadingProjects && <p className="portfolio-loading">Loading projects...</p>}
+                    
+                    {/* Portfolio Cards */}
+                    <div ref={portfolioCardsRef} className="portfolio-cards">
+                        {filteredProjects.slice(0, visibleProjects).map((item, index) => {
+                            const tags = parseTechStack(item.techStack);
+                            return (
                                 <div
                                     key={item._id || item.id || index}
                                     className={`portfolio-card ${portfolioVisible ? 'portfolio-card--revealed' : ''}`}
@@ -290,84 +293,130 @@ const PortfolioSection = () => {
                                     ref={(el) => (cardRefs.current[index] = el)}
                                     onMouseMove={(e) => handleMouseMove(e, index)}
                                     onMouseLeave={() => handleMouseLeave(index)}
-                                    onClick={() => handleProjectClick(item) }
+                                    onClick={() => handleProjectClick(item)}
                                 >
-                                    {/* Project Image */}
-                                   
-                                    
-                                    <div className="card-content">
-                                   
-                                       <h4 className="headers_1">{item.title?.length > 50 
-                        ? item.title.substring(0, 50) + '...' 
-                        : item.title}</h4>
-                                        <p className="para">{item.description?.length > 50 
-                        ? item.description.substring(0, 50) + '...' 
-                        : item.description
-                    } </p>
-                                        
+                                    {/* Top Image / Media Banner */}
+                                    <div className="portfolio-card__media">
+                                        {item.image ? (
+                                            <img 
+                                                src={item.image} 
+                                                alt={item.title || item.name || 'Project image'} 
+                                                className="portfolio-card__img"
+                                                onError={(e) => {
+                                                    e.target.style.display = 'none';
+                                                    if (e.target.nextSibling) {
+                                                        e.target.nextSibling.style.display = 'flex';
+                                                    }
+                                                }}
+                                            />
+                                        ) : null}
+
+                                        {/* Fallback Banner if no image or image error */}
+                                        <div 
+                                            className="portfolio-card__fallback" 
+                                            style={{ display: item.image ? 'none' : 'flex' }}
+                                        >
+                                            <div className="portfolio-card__fallback-pattern"></div>
+                                            <div className="portfolio-card__fallback-icon">
+                                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
+                                                    <path d="M16 18l6-6-6-6M8 6l-6 6 6 6" strokeLinecap="round" strokeLinejoin="round"/>
+                                                </svg>
+                                            </div>
+                                            <span className="portfolio-card__fallback-text">
+                                                {item.title?.substring(0, 18) || 'Project'}
+                                            </span>
+                                        </div>
+
+                                        {/* Media Overlay Gradient */}
+                                        <div className="portfolio-card__media-overlay"></div>
+
+                                        {/* Floating Number Badge */}
+                                        <span className="portfolio-card__num">
+                                            {String(index + 1).padStart(2, '0')}
+                                        </span>
+
+                                        {/* Floating Category / Case Study Badge */}
+                                        <span className="portfolio-card__category-badge">
+                                            {item.category || 'CASE STUDY'}
+                                        </span>
+                                    </div>
+
+                                    {/* Card Body */}
+                                    <div className="portfolio-card__body">
+                                        <div className="portfolio-card__header">
+                                            <h4 className="portfolio-card__title" title={item.title}>
+                                                {item.title}
+                                            </h4>
+                                            <p className="portfolio-card__desc" title={item.description}>
+                                                {item.description}
+                                            </p>
+                                        </div>
+
                                         {/* Technologies Used */}
-                                        {item.techStack && (
-                                            <div className="technologies">
-                                                {item.techStack.slice(0,4).map((tech, techIndex) => (
+                                        {tags.length > 0 && (
+                                            <div className="portfolio-card__technologies">
+                                                {tags.slice(0, 4).map((tech, techIndex) => (
                                                     <span key={techIndex} className="tech-tag">
                                                         {tech.toString().toUpperCase()}
                                                     </span>
                                                 ))}
+                                                {tags.length > 4 && (
+                                                    <span className="tech-tag tech-tag--more">
+                                                        +{tags.length - 4}
+                                                    </span>
+                                                )}
                                             </div>
                                         )}
-                                        
-                                        <div className="pair">
+
+                                        {/* Card Footer / Action Link */}
+                                        <div className="portfolio-card__footer">
                                             <a 
                                                 href={item.liveUrl || item.repoUrl || item.homepage || item.githubUrl || '#'} 
                                                 className="view-project" 
                                                 target="_blank" 
                                                 rel="noreferrer"
-                                                onClick={handleViewAllClick}
+                                                onClick={(e) => {
+                                                    e.stopPropagation();
+                                                    const targetUrl = item.liveUrl || item.repoUrl || item.homepage || item.githubUrl;
+                                                    if (!targetUrl || targetUrl === '#') {
+                                                        e.preventDefault();
+                                                        handleProjectClick(item);
+                                                    }
+                                                }}
                                             >
-                                                View project
+                                                <span>View project</span>
+                                                <span 
+                                                    className="arrow" 
+                                                    ref={(el) => (arrowRefs.current[index] = el)}
+                                                ></span>
                                             </a>
-                                            <div
-                                                className="arrow"
-                                                ref={(el) => (arrowRefs.current[index] = el)}
-                                            ></div>
                                         </div>
                                     </div>
-                                     {item.image && (
-                                        <div className="project-image">
-                                            <img src={item.image} alt={item.name || item.title} />
-                                            
-                                           
-                                        </div>
-                                    )}
                                 </div>
-                            ))}
-                        </div>
+                            );
+                        })}
+                    </div>
 
-                        {/* View All/Less Button */}
-                        {filteredProjects.length > 5&& (
-                            <button 
-                                className="view-all" 
-                                onClick={() => {
-                                    setVisibleProjects(prev => 
-                                        prev === 5 ? filteredProjects.length : 5
-                                    );
-                                }}
-                            >
-                                {visibleProjects === 5 ? 
-                                    `View all ${filteredProjects.length} projects` : 
-                                    'View less'
-                                }
-                            </button>
-                        )}
+                    {/* View All/Less Button */}
+                    {filteredProjects.length > 5 && (
+                        <button 
+                            className="view-all" 
+                            onClick={() => {
+                                setVisibleProjects(prev => 
+                                    prev === 5 ? filteredProjects.length : 5
+                                );
+                            }}
+                        >
+                            {visibleProjects === 5 ? 
+                                `View all ${filteredProjects.length} projects` : 
+                                'View less'
+                            }
+                        </button>
+                    )}
                 </>
-
-                {/* Project Details Modal */}
-                {selectedProject && ( 
-            navigate(`/project_view_page/${selectedProject._id}`)
-                )}
             </section>
         </div>
-         </section>
+        </section>
     );
    
 };

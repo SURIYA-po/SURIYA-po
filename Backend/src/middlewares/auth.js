@@ -4,11 +4,9 @@ const User = require("../models/User");
 const protect = async (req, res, next) => {
   let token = null;
   const authHeader = req.headers.authorization || "";
-  console.log("Authorization header:", authHeader);
 
   if (authHeader.startsWith("Bearer ")) {
     token = authHeader.split(" ")[1];
-    console.log("Token from header:", token);
   }
   if (!token) return res.status(401).json({ message: "Not authorized" });
 

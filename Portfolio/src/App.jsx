@@ -68,7 +68,7 @@ function App() {
           <>
             <HeaderComponent/>
             <AboutPage/>
-            <Footer/>
+            
           </>
         } />
 

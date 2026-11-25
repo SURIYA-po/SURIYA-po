@@ -75,8 +75,7 @@ function Blog() {
 
         <div className="projects-sidebar md:col-span-1">
           <p className="projects-intro-text mb-4">
-            Take a look at my portfolio to view my WordPress and frontend development projects. Discover
-            sleek websites, frontend tricks, and more for inspiration on your next web project.
+            Explore a curated collection of my projects across AI agents, cybersecurity, full-stack web apps, and distributed systems. Each build highlights practical architecture, real-world problem-solving, and hands-on implementation.
           </p>
 
           <h3 className="projects-skills-heading font-semibold mb-2">Skills</h3>

@@ -7,10 +7,6 @@ const cloudinary = require("../config/cloudinary");
 
 exports.register = async (req, res) => {
   try {
-console.log("Cloudinary:", cloudinary);
-console.log("Uploader:", cloudinary.uploader);
-
-
     const { name, email, password, role } = req.body;
 
     // Basic validation
@@ -77,8 +73,6 @@ console.log("Uploader:", cloudinary.uploader);
       token,
     });
   } catch (error) {
-    console.error("Registration error:", error);
-
     // Send detailed error in development
     res.status(500).json({
       success: false,
@@ -119,7 +113,6 @@ exports.login = async (req, res) => {
     });
 
   } catch (error) {
-    console.error("Login Error:", error);
     return res.status(500).json({ message: "Server error", error: error.message });
   }
 };

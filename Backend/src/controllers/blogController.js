@@ -3,7 +3,6 @@ const slugify = require("slugify");
 const cloudinary = require("../config/cloudinary");
 exports.createPost = async (req, res) => {
   try { 
-    console.log("user is ", req.user);
     const { title, content, excerpt, tags, isPublished } = req.body;
 
     // -----------------------------
@@ -72,7 +71,6 @@ exports.createPost = async (req, res) => {
     return res.status(201).json(post);
 
   } catch (error) {
-    console.error("Create Post Error:", error);
     return res.status(500).json({
       message: "Server error while creating blog post.",
       error: error.message,

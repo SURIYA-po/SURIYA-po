@@ -55,7 +55,6 @@ app.get("/api/ping", (req, res) => res.json({ ok: true }));
 // ERROR HANDLER
 // ----------------------
 app.use((err, req, res, next) => {
-  console.error(err);
   res.status(500).json({ message: "Server error", error: err.message });
 });
 

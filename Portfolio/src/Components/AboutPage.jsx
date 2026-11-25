@@ -16,7 +16,7 @@ const PERSONAL = {
   upwork: 'https://www.upwork.com/freelancers/~01a58c5d929441a2dc',
   whatsapp: 'https://wa.me/9779826110703',
   summary:
-    'Final-year Information Technology engineering student with hands-on experience in machine learning, deep learning, agentic AI systems, and cybersecurity. Developing a multi-agent autonomous cyber defense framework at IAC, NAST and delivering AI/ML training to students. Seeking opportunities in AI engineering, machine learning, and data science.',
+    ' Information Technology engineering student with hands-on experience in machine learning, deep learning, agentic AI systems, and cybersecurity. Developing a multi-agent autonomous cyber defense framework at IAC, NAST and delivering AI/ML training to students. Seeking opportunities in AI engineering, machine learning, and data science.',
 };
 
 
@@ -29,8 +29,8 @@ const TIMELINE = [
     type: 'education',
     role: 'B.E. in Information Technology',
     org: 'Pokhara University — NCIT, Lalitpur',
-    period: 'Jun 2022 – Sep 2026 (Expected)',
-    isCurrent: true,
+    period: 'Jun 2022 – Sep 20226',
+    isCurrent: false,
     location: '📍 Lalitpur, Nepal',
     bullets: [
       'GPA: 3.8 / 4.0 — merit-based scholarship for academic excellence.',
